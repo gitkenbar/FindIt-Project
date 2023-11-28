@@ -20,7 +20,18 @@ Used LLM Chat GPT 3.5 to generate a set of "vaporwave aethetic styles" and put t
 
 Implemented structure in accordance with Feature Modules from outset to avoid technical debt around optimization
 
-Built skeletal structure of Auth Module
-Module
-Service
-Component
+Built Shared folder
+
+Built Auth folder/files
+
+Built Header folder/files
+
+Built CreateHunts folder/files
+
+Built BrowseHunts folder/files
+
+Built MyHunts folder/files
+: Built MyHuntsParticipating folder/files
+: Built MyHuntsAdministrating folder/files
+
+Added navbar HTML template from personal project to get us started with components/layout.
