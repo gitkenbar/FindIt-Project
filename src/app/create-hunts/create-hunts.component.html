@@ -1,9 +1,10 @@
 <form (ngSubmit)="onFormSubmit(f)" #f="ngForm">
-  <div id="hunt-data" ngModelGroup="huntData" #gameData="ngModelGroup">
+  <div id="huntData">
     <div class="form-group">
       <label for="name">Hunt Name</label>
       <input
         type="text"
+        id="name"
         class="form-control"
         ngModel
         name="name"
@@ -40,16 +41,16 @@
                style="color: rgb(170, 16, 184)">Please enter a valid list ending date</span>
     </div>
     <div class="form-group">
-      <label for="listOfItems">Things to Look For</label>
+      <label for="itemList">Things to Look For</label>
       <textarea
         class="form-control"
         ngModel
-        name="listOfItems"
+        name="itemList"
         required
-        #listOfItems="ngModel"
+        #itemList="ngModel"
         cols="30"
         rows="10"></textarea>
-        <span *ngIf="!listOfItems.valid && listOfItems.touched"
+        <span *ngIf="!itemList.valid && itemList.touched"
                class="help-block"
                style="color: rgb(170, 16, 184)">Please enter a valid list of items</span>
     </div>
