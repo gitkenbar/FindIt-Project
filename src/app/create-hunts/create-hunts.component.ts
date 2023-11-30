@@ -11,6 +11,7 @@ import { HuntService } from '../shared/hunt.service';
 })
 export class CreateHuntsComponent {
   isEditingHunt: boolean = false;
+<<<<<<< Updated upstream
   // huntData: Partial<Hunt> = {
   //   name: '',
   //   begin: new Date, // I am not sure how exactly to declare an empty date, so I tried this. It works for now
@@ -18,6 +19,15 @@ export class CreateHuntsComponent {
   //   listOfItems: [],
   //   isProtected: false
   // }
+=======
+  huntData: Partial<Hunt> = {
+    name: '',
+    begin: new Date, // I am not sure how exactly to declare an empty date, so I tried this. It works for now
+    end: new Date,
+    itemList: [],
+    isProtected: false
+  }
+>>>>>>> Stashed changes
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -28,6 +38,7 @@ export class CreateHuntsComponent {
     if (form.invalid) return;
     // const { uid, name, begin, end, itemList } = Hunt
 
+<<<<<<< Updated upstream
     const newHunt = new Hunt(
       1,
       form.value.name,
@@ -45,6 +56,24 @@ export class CreateHuntsComponent {
     //   listOfItems: this.huntData.listOfItems,
     //   isProtected: this.huntData.isProtected
     // }
+=======
+    const newHunt = new Hunt(1, form.value.name, form.value.begin, form.value.end, form.value.listOfItems.split(" "), false)
+
+    /* this.huntData = {
+      uid: form.value.uid,
+      name: form.value.name,
+      listOfItems: form.value.items
+    } */
+
+    /* const newHunt: Hunt = {
+      uid: +(Math.random() * 1000).toFixed(0),
+      name: this.huntData.name,
+      begin: this.huntData.begin,
+      end: this.huntData.end,
+      listOfItems: this.huntData.listOfItems,
+      isProtected: this.huntData.isProtected
+    } */
+>>>>>>> Stashed changes
 
     this.huntService.addHunt(newHunt)
     this.onResetForm(form);
