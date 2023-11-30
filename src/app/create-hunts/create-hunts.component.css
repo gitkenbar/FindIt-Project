@@ -1,0 +1,17 @@
+.form-group {
+  flex: auto;
+  width: 20%;
+  justify-content: center;
+}
+
+#hunt-data {
+  margin: 2rem 0 0 2rem;
+}
+
+.form-group .ng-touched.ng-invalid {
+  border: 3px solid rgb(170, 16, 184)
+}
+
+label {
+  font-size: 1.5rem;
+}

@@ -1,1 +1,64 @@
-<p>create-hunts works!</p>
+<form (ngSubmit)="onFormSubmit(f)" #f="ngForm">
+  <div id="hunt-data" ngModelGroup="huntData" #gameData="ngModelGroup">
+    <div class="form-group">
+      <label for="name">Hunt Name</label>
+      <input
+        type="text"
+        class="form-control"
+        ngModel
+        name="name"
+        required
+        #name="ngModel">
+        <span *ngIf="!name.valid && name.touched"
+        class="help-block"
+        style="color: rgb(170, 16, 184)">Please enter a valid Hunt Name</span>
+    </div>
+    <div class="form-group">
+      <label for="begin">Beginning Date</label>
+      <input
+        type="date"
+        class="form-control"
+        ngModel
+        name="begin"
+        required
+        #begin="ngModel">
+        <span *ngIf="!begin.valid && begin.touched"
+        class="help-block"
+        style="color: rgb(170, 16, 184)">Please enter a valid beginning date</span>
+    </div>
+    <div class="form-group">
+      <label for="end">Ending Date</label>
+      <input
+        type="date"
+        class="form-control"
+        ngModel
+        name="end"
+        required
+        #end="ngModel">
+        <span *ngIf="!end.valid && end.touched"
+               class="help-block"
+               style="color: rgb(170, 16, 184)">Please enter a valid list ending date</span>
+    </div>
+    <div class="form-group">
+      <label for="listOfItems">Things to Look For</label>
+      <textarea
+        class="form-control"
+        ngModel
+        name="listOfItems"
+        required
+        #listOfItems="ngModel"
+        cols="30"
+        rows="10"></textarea>
+        <span *ngIf="!listOfItems.valid && listOfItems.touched"
+               class="help-block"
+               style="color: rgb(170, 16, 184)">Please enter a valid list of items</span>
+    </div>
+    <button (click)="onResetForm()" type="button" class="btn btn-secondary">
+      Cancel
+    </button>
+
+    <button [disabled]="!f.valid" class="btn btn-vapor-primary" type="submit">
+      {{ isEditingHunt ? "Update" : "Create" }}
+    </button>
+  </div>
+</form>
