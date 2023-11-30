@@ -11,5 +11,6 @@ export class HuntService {
 
   addHunt(newHunt: Hunt) {
     this.hunts.push(newHunt);
+    console.log(this.hunts);
   }
 }
