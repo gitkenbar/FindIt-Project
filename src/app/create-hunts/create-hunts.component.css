@@ -1,0 +1,39 @@
+.form-group {
+  flex: auto;
+  justify-content: center;
+}
+
+#hunt-data {
+  margin: 2rem 0 0 2rem;
+}
+
+.form-group .ng-touched.ng-invalid {
+  border: 3px solid rgb(170, 16, 184)
+}
+
+label {
+  font-size: 1.5rem;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 50;
+}
+
+.modal-container {
+  position: fixed;
+  top: 30vh;
+  left: 20vw;
+  width: 75vw;
+  padding: 16px;
+  z-index: 100;
+  background: rgba(0, 247, 255, 0.635);
+  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26)
+}
+
+

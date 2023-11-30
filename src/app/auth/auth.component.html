@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Welcome Back!</h1>
+  <p>Lets find-it!</p>
+  <form (ngSubmit)="authSubmit(aF)" #aF="ngForm" ></form>
+  <label for="email">
+    <input
+    type="email"
+    id="email"
+    name="email"
+    class="form-control"
+    email
+    ngModel
+    required
+  />
+
+</label>
+<label for="Password">
+  <input
+    type="password"
+    id="password"
+    name="password"
+    class="form-control"
+    minlength="6"
+    ngModel
+    required
+  />
+</label>
+<p>Don't have an account? <span (click)="toggleSignIn()" class="greentext">Sign Up</span></p>
+<button class="btn btn-success" type="submit" [disabled]="!aF.valid">
+  {{ isLoginMode ? "Sign In" : "Sign Up" }}
+</button>
+</div>

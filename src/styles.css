@@ -1,1 +1,137 @@
-/* You can add global styles to this file, and also import other style files */
+/* General Vaporwave Aesthetic */
+* {
+margin: 0;
+padding: 0;
+}
+
+body {
+  /* min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+  background: linear-gradient(45deg, #ff9900, #ff66cc);
+  color: #6c757d;
+  /* Dark gray text */
+  font-family: 'Arial', sans-serif;
+}
+
+.background-gradient-1 {
+  background: linear-gradient(45deg, #ffccff, #9933ff);
+}
+
+.background-gradient-2 {
+  background: linear-gradient(45deg, #66ccff, #cc00cc);
+}
+
+.background-gradient-3 {
+  background: linear-gradient(45deg, #9933ff, #66ccff);
+}
+
+.background-gradient-4 {
+  background: linear-gradient(45deg, #ff6666, #cc00cc);
+}
+
+.background-gradient-5 {
+  background: linear-gradient(45deg, #9933ff, #ffccff);
+}
+
+.background-gradient-6 {
+  background: linear-gradient(45deg, #33cccc, #0066cc);
+}
+
+/* Default Background Style */
+.background-gradient-7 {
+  background: linear-gradient(45deg, #ff9900, #ff66cc);
+}
+
+/* Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #9933ff;
+  /* Purple headings */
+}
+
+/* Link Styles */
+a {
+  color: #cc00cc;
+  /* Pink links */
+}
+
+/* Button Styles */
+.btn-vapor-primary {
+  background-color: #66ccff;
+  /* Light blue */
+  border-color: #66ccff;
+  color: #330099;
+  /* Dark purple text */
+}
+
+.btn-vapor-warn {
+  background-color: #ff6666;
+  /* Light red */
+  border-color: #ff6666;
+  color: #990000;
+  /* Dark red text */
+}
+
+.btn-vapor-success {
+  background-color: #00cc66;
+  /* Green background */
+  border-color: #00cc66;
+  color: #330099;
+  /* Dark purple text */
+}
+
+.btn-vapor-success:hover {
+  background-color: #33ff99;
+  /* Light green on hover */
+  border-color: #33ff99;
+  color: #330099;
+  /* Dark purple text on hover */
+}
+
+/* Card Styles */
+.card {
+  background-color: #ffccff;
+  /* Pink background */
+  border-color: #cc00cc;
+  /* Pink border */
+}
+
+/* Form Styles */
+.form-control {
+  background-color: #ffccff;
+  /* Pink background */
+  border-color: #cc00cc;
+  /* Pink border */
+  color: #330099;
+  /* Dark purple text */
+}
+
+/* Input Focus Styles */
+.form-control:focus {
+  border-color: #9933ff;
+  /* Purple border on focus */
+  box-shadow: 0 0 10px rgba(153, 51, 255, 0.8);
+  /* Purple box shadow on focus */
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #330099;
+  /* Dark purple navbar */
+  color: #cc00cc;
+  /* Pink text */
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #330099;
+  /* Dark purple background */
+  color: #cc00cc;
+  /* Pink text */
+}
