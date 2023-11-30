@@ -20,13 +20,19 @@ export class AuthComponent {
     if (this.isLoginMode) {
 
     } else {
-      this.authService.signUp(email, password).subscribe((res) => {
-        console.log('Auth Response Success:', res);
-      },
-      (err) => {
-        console.error('Auth Res Error', err)
+      this.authService.signUp(email, password).subscribe({
+        next: (res) => console.log('Auth Response Success:', res),
+        error:(res) => console.log(res)
       })
     }
+    //rxjs flags deprecated syntax:
+    //   this.authService.signUp(email, password).subscribe((res) => {
+    //     console.log('Auth Response Success:', res);
+    //   },
+    //   (err) => {
+    //     console.error('Auth Res Error', err)
+    //   })
+    // }
 
     console.log(authForm.value);
     authForm.reset();
