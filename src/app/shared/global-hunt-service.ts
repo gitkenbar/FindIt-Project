@@ -11,14 +11,21 @@ export class GlobalHuntService {
 
   private globalHunts: Hunt[] = []
 
+  debugItems:Item[] = [
+  new Item('Bugs', true),
+  new Item('Duck', false),
+  new Item('Goose', true)
+  ]
+
   debugHunt = new Hunt(
     0,
     'Debug Hunt',
     new Date(),
     new Date(7),
-    Item[''],
+    this.debugItems,
     false
   )
+
 
   constructor() { }
 

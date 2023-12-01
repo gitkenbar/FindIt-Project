@@ -8,17 +8,21 @@ import { BehaviorSubject } from 'rxjs';
 export class HuntService {
   huntSelected = new BehaviorSubject<Hunt>(null);   //flexible observable to broadcast a selected hunt
 
-  private hunts: Hunt[] = []
+  private myHunts: Hunt[] = []  //propose renaming variable to reduce ambiguity with GlobalHuntService
 
   constructor() { }
 
   addHunt(newHunt: Hunt) {
-    this.hunts.push(newHunt);
-    console.log(this.hunts);
+    this.myHunts.push(newHunt);
+    console.log(this.myHunts);
+  }
+
+  getMyHunts() {
+    return this.myHunts.slice()
   }
 
   setHuntSelectedByIndex(i){                          //a method for setting huntSelected by index
-    let selectedHunt = this.hunts.slice()[i];
+    let selectedHunt = this.myHunts.slice()[i];
     this.huntSelected.next(selectedHunt);
   }
 }

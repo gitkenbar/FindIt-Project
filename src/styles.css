@@ -96,6 +96,9 @@ a {
 
 /* Card Styles */
 .card {
+  margin: 1em;
+  padding: 1em;
+  border-radius: .25em;
   background-color: #ffccff;
   /* Pink background */
   border-color: #cc00cc;
