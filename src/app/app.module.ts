@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { CreateHuntsComponent } from './create-hunts/create-hunts.component';
 import { AuthComponent } from './auth/auth.component';
+import { BrowseHuntsModule } from './browse-hunts/browse-hunts.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthComponent } from './auth/auth.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowseHuntsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
