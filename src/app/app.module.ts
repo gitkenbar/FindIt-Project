@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CreateHuntsComponent } from './create-hunts/create-hunts.component';
 import { AuthComponent } from './auth/auth.component';
 import { BrowseHuntsModule } from './browse-hunts/browse-hunts.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BrowseHuntsModule } from './browse-hunts/browse-hunts.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowseHuntsModule
+    BrowseHuntsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
