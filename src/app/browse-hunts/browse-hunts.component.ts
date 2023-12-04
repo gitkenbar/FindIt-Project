@@ -4,7 +4,7 @@ import { DataStorageService } from '../shared/data-storage.service';
 import { HuntService } from '../shared/hunt.service';
 import { GlobalHuntService } from '../shared/global-hunt-service';
 import { OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Hunt } from '../shared/hunt.model';
 
 
@@ -18,7 +18,6 @@ export class BrowseHuntsComponent implements OnInit, OnDestroy {
 
   selectedHunt:Hunt;
   selectedHuntSubscription:Subscription;
-
   myHunts:Hunt[];
 
   constructor (private dataStorage:DataStorageService,
@@ -43,7 +42,7 @@ export class BrowseHuntsComponent implements OnInit, OnDestroy {
     }
 
     passDebug() {
-      this.huntService.addHunt(this.selectedHunt);
+      // this.huntService.addHunt(this.selectedHunt);
       this.myHunts = this.huntService.getMyHunts();
       console.log(this.myHunts);
     }
