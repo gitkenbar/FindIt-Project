@@ -18,33 +18,51 @@ export class BrowseHuntsComponent implements OnInit, OnDestroy {
 
   selectedHunt:Hunt;
   selectedHuntSubscription:Subscription;
-  myHunts:Hunt[];
+
+  displayedHuntsSubscription:Subscription;
+  displayedHunts:Hunt[];
 
   constructor (private dataStorage:DataStorageService,
                private huntService:HuntService,
                private globalHuntService:GlobalHuntService) {}
 
     ngOnInit(){
+      this.onGetGlobal();
       this.selectedHuntSubscription = this.globalHuntService.huntSelected.subscribe((hunt) => {
+        console.log(`Hunt:` + hunt);
         this.selectedHunt = hunt;
       });
-      this.myHunts = this.huntService.getMyHunts();
+      this.displayedHuntsSubscription = this.globalHuntService.huntsDisplayed.subscribe((hunts) => {
+        this.displayedHunts = hunts;
+      });
     }
 
     ngOnDestroy() {
       if(this.selectedHuntSubscription) {
         this.selectedHuntSubscription.unsubscribe();
       }
+      if(this.displayedHuntsSubscription) {
+        this.displayedHuntsSubscription.unsubscribe();
+      }
     }
 
-    onDebug(){
-      this.globalHuntService.setDebug()
-    }
+   onGetGlobal(){
+    this.dataStorage.fetchFromDB().subscribe({
+      next: (data) => this.globalHuntService.setGlobalHunts(data),
+      error: (error) => console.log(`ERROR BAD FAIL. Sincerely, browse-hunts.component.ts` + error )
+    });
+   }
 
-    passDebug() {
-      // this.huntService.addHunt(this.selectedHunt);
-      this.myHunts = this.huntService.getMyHunts();
-      console.log(this.myHunts);
-    }
+   onSelect(uid:number){
+    console.log(uid);
+    this.globalHuntService.setHuntSelectedByUid(uid);
+
+   }
+
+    // passDebug() {
+    //   // this.huntService.addHunt(this.selectedHunt);
+    //   this.myHunts = this.huntService.getMyHunts();
+    //   console.log(this.myHunts);
+    // }
 
 }

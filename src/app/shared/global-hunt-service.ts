@@ -7,35 +7,41 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class GlobalHuntService {
-  huntSelected = new BehaviorSubject<Hunt>(null);   //flexible observable to broadcast a selected hunt
+  huntsDisplayed = new BehaviorSubject<Hunt[]>(null)
+  huntSelected = new BehaviorSubject<Hunt>(null)
 
   private globalHunts: Hunt[] = []
 
-  debugItems:Item[] = [
-  new Item('Bugs', true),
-  new Item('Duck', false),
-  new Item('Goose', true)
-  ]
-
-  debugHunt = new Hunt(
-    0,
-    'Debug Hunt',
-    new Date(),
-    new Date(7),
-    this.debugItems,
-    false
-  )
-
-
   constructor() { }
 
-  setHuntSelectedByUid(uid){                          //a method for setting huntSelected
-    let selectedHunt = this.globalHunts.slice()[uid];       //we may want to use index instead of UID here
-    this.huntSelected.next(selectedHunt);
+setHuntSelectedByUid(uid) {
+  let selectedHunt = this.globalHunts.find((hunt) => hunt.uid === uid);
+  this.huntSelected.next(selectedHunt);
+}
+
+  setGlobalHunts(hunts:Hunt[]) {
+    this.globalHunts = hunts;
+    this.huntsDisplayed.next(hunts);
   }
 
-  setDebug() {
-    this.huntSelected.next(this.debugHunt);
+  getGlobalHunts() {
+    this.huntsDisplayed.next(this.globalHunts);
   }
 
 }
+
+// //Debug Object
+// debugItems:Item[] = [
+// new Item('Bugs', true),
+// new Item('Duck', false),
+// new Item('Goose', true)
+// ]
+
+// debugHunt = new Hunt(
+//   0,
+//   'Debug Hunt',
+//   new Date(),
+//   new Date(7),
+//   this.debugItems,
+//   false
+// )

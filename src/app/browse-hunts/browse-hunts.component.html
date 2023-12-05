@@ -1,12 +1,13 @@
 <div class="container background-gradient-1">
   <div class="row" style="padding: 1em; justify-content: space-around;">
-  <button class="btn btn-vapor-primary"(click)="onDebug()">Set Debug</button>
-  <button class="btn btn-vapor-success"(click)="passDebug()">Pass to Collection</button>
+  <!-- <button class="btn btn-vapor-primary"(click)="onGetGlobal()">Retrieve Global</button> -->
   </div>
   <div class="row">
     <div class="col-4">
-          <div class="card" *ngFor="let hunt of myHunts">
+          <div class="card" *ngFor="let hunt of displayedHunts">
           <p>{{ hunt.name }}</p>
+          <p>{{ hunt.begin }}</p>
+          <button class="btn btn-vapor-success" (click)="onSelect(hunt.uid)">View Hunt Details</button>
         </div>
     </div>
   <div class="col-8">
