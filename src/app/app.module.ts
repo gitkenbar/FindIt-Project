@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { CreateHuntsComponent } from './create-hunts/create-hunts.component';
+import { AuthComponent } from './auth/auth.component';
+import { BrowseHuntsModule } from './browse-hunts/browse-hunts.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CreateHuntsComponent // I declared this component here because ngForm would not work otherwise
+    CreateHuntsComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowseHuntsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
