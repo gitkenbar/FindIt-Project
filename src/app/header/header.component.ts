@@ -32,8 +32,10 @@ export class HeaderComponent implements OnInit{
     this.authService.user.subscribe(user => {
         this.isAuthenticated = !!user
         // where !! means not-not where !user is not the user, and !!user is not- not the user.
-});
-}}
+      });
+    }
+
   onSave() {
     this.dbService.saveToDB();
   }
+}
