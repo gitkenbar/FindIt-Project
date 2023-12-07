@@ -21,7 +21,7 @@ export class CreateHuntsComponent {
   onFormSubmit(form: NgForm) {
     console.log(form);
     if (form.invalid) return;
-
+    // const { uid, name, begin, end, itemList } = Hunt  //destructuring example if needed
     const newHunt = new Hunt(  //Consider destructuring as alternative solution for clarity
       +(Math.random() * 1000).toFixed(0),
       form.value.name,
@@ -29,7 +29,6 @@ export class CreateHuntsComponent {
       form.value.end,
       form.value.itemList.split(" "),
       false )
-
     this.huntService.addHunt(newHunt)
     this.onResetForm(form);
     console.log(newHunt);

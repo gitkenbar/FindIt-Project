@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     CreateHuntsComponent,
-    AuthComponent // I declared this component here because ngForm would not work otherwise
+    AuthComponent
   ],
   imports: [
     BrowserModule,

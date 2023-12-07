@@ -2,10 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateHuntsComponent } from './create-hunts/create-hunts.component';
 import { BrowseHuntsComponent } from './browse-hunts/browse-hunts.component';
+import { AuthComponent } from './auth/auth.component';
+import { MyHuntsComponent } from './my-hunts/my-hunts.component';
 
 const routes: Routes = [
+  { path: 'auth', component: AuthComponent },
   { path: 'create', component: CreateHuntsComponent },
-  { path: 'browse', component: BrowseHuntsComponent }  //TODO: Outsource to feature module (Pat)
+  { path: 'myHunts', component: MyHuntsComponent },
+  { path: 'browse', component: BrowseHuntsComponent }
+
+    //TODO: Outsource to feature module (Pat)
 ];
 
 @NgModule({

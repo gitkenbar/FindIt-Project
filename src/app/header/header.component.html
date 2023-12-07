@@ -2,13 +2,20 @@
   <a class="navbar-brand">FindIt!</a>
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/tbd" routerLinkActive="active">My Hunts</a>
-      <a class="nav-item nav-link" routerLink="browse" routerLinkActive="active">Browse Hunts</a>
-      <a class="nav-item nav-link" routerLink="create" routerLinkActive="active">Create a Hunt</a>
+      <a class="nav-item nav-link" routerLink="myHunts" routerLinkActive="active" *ngIf="isAuthenticated">My Hunts</a>
+      <a
+      class="nav-item nav-link"
+      routerLink="browse"
+       routerLinkActive="active">Browse Hunts</a>
+      <a class="nav-item nav-link" routerLink="create" routerLinkActive="active"
+      *ngIf="isAuthenticated">Create a Hunt</a>
     </div>
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link" routerLink="/tbd" routerLinkActive="active">Login</a>
+      <a class="nav-item nav-link" routerLink="auth" routerLinkActive="active"
+      *ngIf="!isAuthenticated">Login</a>
+      <a class="nav-item nav-link"
+      (click)="onLogout()"
+      *ngIf="isAuthenticated">Log-Out</a>
     </div>
       <button class="btn btn-vapor-primary" style="cursor: pointer" (click)="onSave()">Save Hunts</button>
   </div>
