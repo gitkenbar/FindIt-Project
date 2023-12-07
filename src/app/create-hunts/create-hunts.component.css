@@ -21,7 +21,7 @@ label {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 50;
 }
 
@@ -32,6 +32,8 @@ label {
   width: 75vw;
   padding: 16px;
   z-index: 100;
-  background: white;
+  background: rgba(0, 247, 255, 0.635);
   box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26)
 }
+
+

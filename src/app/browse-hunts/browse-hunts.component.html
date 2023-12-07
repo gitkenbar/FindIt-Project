@@ -1,1 +1,36 @@
-<p>browse-hunts works!</p>
+<div class="container background-gradient-1">
+  <div class="row" style="padding: 1em; justify-content: space-around;">
+  <!-- <button class="btn btn-vapor-primary"(click)="onGetGlobal()">Retrieve Global</button> -->
+  </div>
+  <div class="row">
+    <div class="col-4">
+          <div class="card" *ngFor="let hunt of displayedHunts">
+          <p>{{ hunt.name }}</p>
+          <p>{{ hunt.begin }}</p>
+          <button class="btn btn-vapor-success" (click)="onSelect(hunt.uid)">View Hunt Details</button>
+        </div>
+    </div>
+  <div class="col-8">
+    <div class="card" *ngIf="selectedHunt; else falseTemplate">
+      <h2>{{ selectedHunt.name }}</h2>
+      <p><b>Start Time:</b><br>
+        {{ selectedHunt.begin }}</p>
+      <p><b>End Time:</b><br>
+        {{ selectedHunt.end }}</p>
+      <p><b>Items to Find:</b><br>
+        <ng-container *ngFor="let item of selectedHunt.itemList; let last = last">
+          {{ item.name }}{{ !last ? ', ' : '' }}
+        </ng-container>
+      </p>
+      <p><b>Availability</b><br>
+        {{ selectedHunt.isProtected === true ? 'Request Access' : 'Open to Join' }}</p>
+    </div>
+    <ng-template #falseTemplate>
+      <div class="card">
+        <h3>No Hunts to Display!</h3>
+      </div>
+    </ng-template>
+  </div>
+  </div>
+
+</div>

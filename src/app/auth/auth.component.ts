@@ -49,6 +49,7 @@ export class AuthComponent {
       error: (resData) => console.log("error" + resData)
       });
       // Reset the form
+
     authForm.reset();
   }
 
