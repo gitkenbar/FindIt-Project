@@ -13,6 +13,9 @@ import { DataStorageService } from '../shared/data-storage.service';
 })
 export class CreateHuntsComponent {
   isEditingHunt: boolean = false;
+  items: Item[] = [
+    new Item("Sample Item", false, [{latitude: 15, longitude: 5}])
+  ];
   selectedProof:string = 'option1';
 
   constructor(private router: Router,
@@ -27,10 +30,7 @@ export class CreateHuntsComponent {
     const name = form.value.name;
     const begin = form.value.begin;
     const end = form.value.end;
-    const itemList: Item[] = [
-    new Item('ducks', false),
-    new Item('fish', false)
-    ]
+    const itemList = this.items;
     // const { uid, name, begin, end, itemList } = Hunt  //destructuring example if needed
     const newHunt = new Hunt(uid, name, begin, end, itemList, false)
     this.huntService.addHunt(newHunt)
@@ -44,9 +44,17 @@ export class CreateHuntsComponent {
     console.log(this.selectedProof);
   }
 
-  addNewItem() {
+  addNewItem(itemName: string, geopointN?: number, geopointW?: number) {
+    const newItem = new Item(itemName, false, []);
 
+    // If selectedProof is 'option2', add proof object
+    if (this.selectedProof === 'option2') {
+      newItem.proofs.push({ latitude: geopointN || 0, longitude: geopointW || 0 });
+    }
+
+    this.items.push(newItem);
   }
+
 
   onResetForm(form?: NgForm) {
     form && form.reset();

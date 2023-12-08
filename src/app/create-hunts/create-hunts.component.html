@@ -52,22 +52,42 @@
                   <option value="option2">GeoPoint</option>
               </select>
               <hr>
-              <div class="item-unit">
-            <div class="row card">
-              <label for="item" style="font-size: 1em">Item</label>
-              <input type="text" class="form-control" ngModel name="item" required #itemList="ngModel" style="width:60%">
-              <br>
-              <div style="justify-content: center;" class="row" *ngIf="selectedProof === 'option2'">
-                <label for="geopointN" style="font-size: 1em; margin: .5em;">Latitude: N</label>
-                <input type="number" class="form-control" ngModel name="latitude" required #geopointN="ngModel" style="width:30%">
-                <label for="geopointW" style="font-size: 1em; margin: .5em;">Longitude: W</label>
-                <input type="number" class="form-control" ngModel name="longitude" required #geopointW="ngModel" style="width:30%">
-              </div>
-              <button style="width: 50px; align-self: flex-end;" class="btn btn-vapor-success" (click)="addNewItem()">➕</button>
-              </div>
-            </div>
 
-          </div>
+
+              <!-- THE PROBLEM CODEBLOCK: -->
+              <div class="item-unit" *ngFor="let item of items; let i = index">
+                  <div class="row card">
+                    <label for="item{{i}}"></label>
+                    <h3>{{item.name}}</h3>
+                    <div *ngIf="item.proofs">
+                          <label for="geopointN{{i}}" style="font-size: 1em; margin: .5em;">Latitude: N</label>
+                          <h5>{{items[i].proofs[0].latitude}}</h5>
+                          <label for="geopointN{{i}}" style="font-size: 1em; margin: .5em;">Longitude: W</label>
+                          <h5>{{items[i].proofs[0].longitude}}</h5>
+                    </div>
+                  </div>
+              </div>
+
+<!-- <div class="item-unit" *ngFor="let item of items; let i = index">
+  <div class="row card">
+    <label for="item{{i}}" style="font-size: 1em">Item</label>
+    <input type="text" class="form-control" [(ngModel)]="item.name" name="item{{i}}" required style="width:60%">
+    <br>
+    <div style="justify-content: center;" class="row"
+      *ngIf="item.proofs;">
+      <label for="geopointN{{i}}" style="font-size: 1em; margin: .5em;">Latitude: N</label>
+      <input type="number" class="form-control" [(ngModel)]="item.proofs[0].latitude" name="latitude{{i}}" required
+        style="width:30%">
+      <label for="geopointW{{i}}" style="font-size: 1em; margin: .5em;">Longitude: W</label>
+      <input type="number" class="form-control" [(ngModel)]="item.proofs[0].longitude" name="longitude{{i}}" required
+        style="width:30%">
+    </div>
+    <button style="width: 50px; align-self: flex-end;" class="btn btn-vapor-success" type="button"
+      (click)="addNewItem(item.name, item.proofs[0]?.latitude, item.proofs[0]?.longitude)">➕</button>
+  </div>
+</div> -->
+
+</div>
 
           <!-- <label for="listOfItems">Things to Look For</label>
           <input
