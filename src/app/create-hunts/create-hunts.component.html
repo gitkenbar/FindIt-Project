@@ -45,17 +45,40 @@
         </div>
         <div class="form-group">
           <label for="listOfItems">Things to Look For</label>
-          <textarea
+          <div class="item-container card">
+            <label for="proofs" style="font-size: 1em">Require Proofs?</label>
+              <select id="proofs" name="proofs" [(ngModel)]="selectedProof">
+                  <option value="option1" selected>None</option>
+                  <option value="option2">GeoPoint</option>
+              </select>
+              <hr>
+              <div class="item-unit">
+            <div class="row card">
+              <label for="item" style="font-size: 1em">Item</label>
+              <input type="text" class="form-control" ngModel name="item" required #itemList="ngModel" style="width:60%">
+              <br>
+              <div style="justify-content: center;" class="row" *ngIf="selectedProof === 'option2'">
+                <label for="geopointN" style="font-size: 1em; margin: .5em;">Latitude: N</label>
+                <input type="number" class="form-control" ngModel name="latitude" required #geopointN="ngModel" style="width:30%">
+                <label for="geopointW" style="font-size: 1em; margin: .5em;">Longitude: W</label>
+                <input type="number" class="form-control" ngModel name="longitude" required #geopointW="ngModel" style="width:30%">
+              </div>
+              <button style="width: 50px; align-self: flex-end;" class="btn btn-vapor-success" (click)="addNewItem()">➕</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- <label for="listOfItems">Things to Look For</label>
+          <input
             class="form-control"
             ngModel
             name="itemList"
             required
-            #itemList="ngModel"
-            cols="30"
-            rows="10"></textarea>
+            #itemList="ngModel">
             <span *ngIf="!itemList.valid && itemList.touched"
                   class="help-block"
-                  style="color: rgb(170, 16, 184)">Please enter a valid list of items</span>
+                  style="color: rgb(170, 16, 184)">Please enter a valid list of items</span> -->
         </div>
         <button (click)="onResetForm()" type="button" class="btn btn-secondary">
           Cancel
