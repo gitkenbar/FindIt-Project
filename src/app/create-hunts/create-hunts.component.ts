@@ -23,6 +23,11 @@ export class CreateHuntsComponent {
               private huntService: HuntService,
               private dbService: DataStorageService) {}
 
+  onSwitchProofs(proof:string) {
+    this.selectedProof = proof;
+    console.log(`selectedProof Value ` + this.selectedProof)
+  }
+
   onFormSubmit(form: NgForm) {
     console.log(form);
     if (form.invalid) return;

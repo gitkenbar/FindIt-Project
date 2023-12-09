@@ -43,18 +43,41 @@
                   class="help-block"
                   style="color: rgb(170, 16, 184)">Please enter a valid list ending date</span>
         </div>
-        <div class="form-group">
+     <div class="form-group">
           <label for="listOfItems">Things to Look For</label>
           <div class="item-container card">
             <label for="proofs" style="font-size: 1em">Require Proofs?</label>
-              <select id="proofs" name="proofs" [(ngModel)]="selectedProof">
+                <!-- <select id="proofs" name="proofs" [ngModel]="selectedProof">
                   <option value="option1" selected>None</option>
                   <option value="option2">GeoPoint</option>
               </select>
-              <hr>
+              <hr> -->
+
+              <div class="row">
+                <button type="button" (click)="onSwitchProofs('option1')">None</button>
+                <button type="button" (click)="onSwitchProofs('option2')">GeoPoint</button>
+
+                <h2>WHERE THINGS SHOULD APPEAR:</h2>
+                <div [ngSwitch]="selectedProof">
+                  <ng-container *ngSwitchCase="'option1'">
+                    <p>Displaying Template for option1</p>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'option2'">
+                    <p>Displaying Template for option2</p>
+                  </ng-container>
+                </div>
+              </div>
 
 
-              <!-- THE PROBLEM CODEBLOCK: -->
+              <!-- <div [ngSwitch]="ngSwitch Demo">
+                <p *ngSwitchCase="Example1">Example One</p>
+                <p *ngSwitchCase="Example2">Example Two</p>
+                <p *ngSwitchCase="Example3">Example Three</p>
+                <p *ngSwitchDefault>NoExample</p>
+              </div> -->
+
+
+              <!-- THE PROBLEM CODEBLOCK:
               <div class="item-unit" *ngFor="let item of items; let i = index">
                   <div class="row card">
                     <label for="item{{i}}"></label>
@@ -66,7 +89,7 @@
                           <h5>{{items[i].proofs[0].longitude}}</h5>
                     </div>
                   </div>
-              </div>
+              </div> -->
 
 <!-- <div class="item-unit" *ngFor="let item of items; let i = index">
   <div class="row card">
