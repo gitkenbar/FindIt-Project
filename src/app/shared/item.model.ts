@@ -1,6 +1,6 @@
 export class Item {
   constructor(
-    public name:string,             //The name oif the item, to be displayed in a Hunt
+    public name:string,             //The name of the item, to be displayed in a Hunt
     public huntStatus:Boolean,      //Whether or not the item has been found
     public proofs?:any[]            //An optional array of objects constituting proof an item is found
   ){}

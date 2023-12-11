@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand">FindIt!</a>
+  <a class="navbar-brand" routerLink="home" *ngIf="isAuthenticated">FindIt!</a>
+  <a class="navbar-brand" routerLink="" *ngIf="!isAuthenticated">FindIt!</a>
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <a class="nav-item nav-link" routerLink="myHunts" routerLinkActive="active" *ngIf="isAuthenticated">My Hunts</a>

@@ -14,10 +14,10 @@ export class GlobalHuntService {
 
   constructor() { }
 
-setHuntSelectedByUid(uid) {
-  let selectedHunt = this.globalHunts.find((hunt) => hunt.uid === uid);
-  this.huntSelected.next(selectedHunt);
-}
+  setHuntSelectedByUid(uid) {
+    let selectedHunt = this.globalHunts.find((hunt) => hunt.uid === uid);
+    this.huntSelected.next(selectedHunt);
+  }
 
   setGlobalHunts(hunts:Hunt[]) {
     this.globalHunts = hunts;
