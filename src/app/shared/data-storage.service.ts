@@ -31,7 +31,7 @@ fetchFromDB(): Observable<Hunt[]> {
       return hunts.map((hunt) => {
         const updatedItemList = hunt.itemList.map((itemData) => {
           console.log(`Mid Method itemData:` + itemData);
-          const newItem = new Item(itemData.toString(), true);
+          const newItem = itemData;
           return newItem;
         });
         return { ...hunt, itemList: updatedItemList };
