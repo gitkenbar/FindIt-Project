@@ -15,10 +15,12 @@
             class="help-block"
             style="color: rgb(170, 16, 184)">Please enter a valid Hunt Name</span>
         </div>
-        <div class="form-group">
-          <label for="begin">Beginning Date</label>
+        <div class="row">
+
+          <div class="form-group col-6">
+            <label for="begin">Beginning Date</label>
           <input
-            type="date"
+          type="date"
             class="form-control"
             ngModel
             name="begin"
@@ -29,7 +31,7 @@
             class="help-block"
             style="color: rgb(170, 16, 184)">Please enter a valid beginning date</span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-6">
           <label for="end">Ending Date</label>
           <input
             type="date"
@@ -40,96 +42,76 @@
             required
             #end="ngModel">
             <span *ngIf="!end.valid && end.touched"
-                  class="help-block"
-                  style="color: rgb(170, 16, 184)">Please enter a valid list ending date</span>
+            class="help-block"
+            style="color: rgb(170, 16, 184)">Please enter a valid list ending date</span>
+          </div>
         </div>
+
      <div class="form-group">
           <label for="listOfItems">Things to Look For</label>
           <div class="item-container card">
-            <label for="proofs" style="font-size: 1em">Require Proofs?</label>
-                <!-- <select id="proofs" name="proofs" [ngModel]="selectedProof">
-                  <option value="option1" selected>None</option>
-                  <option value="option2">GeoPoint</option>
-              </select>
-              <hr> -->
-
               <div class="row">
-                <button type="button" (click)="onSwitchProofs('option1')">None</button>
-                <button type="button" (click)="onSwitchProofs('option2')">GeoPoint</button>
+                <label for="proofs" style="font-size: 1.5em; margin-left: 2rem;">Require Proofs?</label>
+                <div style="margin-left: auto;">
+                  <button type="button" [disabled]="selectedProof === 'option1'" class="btn btn-vapor-warn" style="margin-right: 1em;" (click)="onSwitchProofs('option1')">None</button>
+                  <button type="button" [disabled]="selectedProof === 'option2'" class="btn btn-vapor-warn" style="margin-right: 1em;" (click)="onSwitchProofs('option2')">GeoPoint</button>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
 
-                <h2>WHERE THINGS SHOULD APPEAR:</h2>
+                <div class="col-4">
+                  <div class="item-unit" *ngFor="let item of items; let i = index">
+                    <div class="row card">
+                      <label for="item{{i}}"></label>
+                  <h3>{{item.name}}</h3>
+                  <div *ngIf="item.proofs">
+                    <label for="geopointN{{i}}" style="font-size: 1em; margin: .5em;">Latitude: N</label>
+                    <h5>{{items[i].proofs[0].latitude}}</h5>
+                    <label for="geopointN{{i}}" style="font-size: 1em; margin: .5em;">Longitude: W</label>
+                    <h5>{{items[i].proofs[0].longitude}}</h5>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="col-8">
                 <div [ngSwitch]="selectedProof">
                   <ng-container *ngSwitchCase="'option1'">
-                    <p>Displaying Template for option1</p>
+                    <div class="card">
+                      <h3>Enter Item</h3>
+                      <label for="name1">Name:</label>
+                      <input type="text" id="name1" [(ngModel)]="name1" />
+                      <button type="button" style="margin-left: auto; margin-top: 1rem;" class="col-2 btn btn-vapor-success"
+                        (click)="addNewItem(name1);">Add ➕</button>
+                    </div>
                   </ng-container>
                   <ng-container *ngSwitchCase="'option2'">
-                    <p>Displaying Template for option2</p>
+                    <div class="card">
+                      <h3>Enter Item</h3>
+                      <label for="name2">Name:</label>
+                      <input type="text" id="name2" [(ngModel)]="name2" />
+
+                      <label for="latitude">Latitude N:</label>
+                      <input type="number" id="latitude" [(ngModel)]="latitude" />
+
+                      <label for="longitude">Longitude W:</label>
+                      <input type="number" id="longitude" [(ngModel)]="longitude" />
+                      <button type="button" style="margin-left: auto; margin-top: 1rem;" class="col-2 btn btn-vapor-success" (click)="addNewItem(name2, latitude, longitude);" >Add ➕</button>
+                    </div>
                   </ng-container>
                 </div>
               </div>
-
-
-              <!-- <div [ngSwitch]="ngSwitch Demo">
-                <p *ngSwitchCase="Example1">Example One</p>
-                <p *ngSwitchCase="Example2">Example Two</p>
-                <p *ngSwitchCase="Example3">Example Three</p>
-                <p *ngSwitchDefault>NoExample</p>
-              </div> -->
-
-
-              <!-- THE PROBLEM CODEBLOCK:
-              <div class="item-unit" *ngFor="let item of items; let i = index">
-                  <div class="row card">
-                    <label for="item{{i}}"></label>
-                    <h3>{{item.name}}</h3>
-                    <div *ngIf="item.proofs">
-                          <label for="geopointN{{i}}" style="font-size: 1em; margin: .5em;">Latitude: N</label>
-                          <h5>{{items[i].proofs[0].latitude}}</h5>
-                          <label for="geopointN{{i}}" style="font-size: 1em; margin: .5em;">Longitude: W</label>
-                          <h5>{{items[i].proofs[0].longitude}}</h5>
-                    </div>
-                  </div>
-              </div> -->
-
-<!-- <div class="item-unit" *ngFor="let item of items; let i = index">
-  <div class="row card">
-    <label for="item{{i}}" style="font-size: 1em">Item</label>
-    <input type="text" class="form-control" [(ngModel)]="item.name" name="item{{i}}" required style="width:60%">
-    <br>
-    <div style="justify-content: center;" class="row"
-      *ngIf="item.proofs;">
-      <label for="geopointN{{i}}" style="font-size: 1em; margin: .5em;">Latitude: N</label>
-      <input type="number" class="form-control" [(ngModel)]="item.proofs[0].latitude" name="latitude{{i}}" required
-        style="width:30%">
-      <label for="geopointW{{i}}" style="font-size: 1em; margin: .5em;">Longitude: W</label>
-      <input type="number" class="form-control" [(ngModel)]="item.proofs[0].longitude" name="longitude{{i}}" required
-        style="width:30%">
-    </div>
-    <button style="width: 50px; align-self: flex-end;" class="btn btn-vapor-success" type="button"
-      (click)="addNewItem(item.name, item.proofs[0]?.latitude, item.proofs[0]?.longitude)">➕</button>
-  </div>
-</div> -->
-
-</div>
-
-          <!-- <label for="listOfItems">Things to Look For</label>
-          <input
-            class="form-control"
-            ngModel
-            name="itemList"
-            required
-            #itemList="ngModel">
-            <span *ngIf="!itemList.valid && itemList.touched"
-                  class="help-block"
-                  style="color: rgb(170, 16, 184)">Please enter a valid list of items</span> -->
+            </div>
         </div>
+      </div>
         <button (click)="onResetForm()" type="button" class="btn btn-secondary">
           Cancel
         </button>
 
-        <button [disabled]="!f.valid" class="btn btn-vapor-primary" type="submit">
+        <button (click)="passDebugItem()" type="button" class="btn btn-vapor-primary">Pass in Debug Item</button>
+        <!-- <button [disabled]="!f.valid" class="btn btn-vapor-primary" type="submit">
           {{ isEditingHunt ? "Update" : "Create" }}
-        </button>
+        </button> -->
     </form>
   </div>
 </div>

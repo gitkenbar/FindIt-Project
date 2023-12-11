@@ -1,3 +1,5 @@
+//TODO: Reconfigure as Reactive Form
+
 import { Component } from '@angular/core';
 import { Hunt } from '../shared/hunt.model';
 import { Item } from '../shared/item.model';
@@ -17,6 +19,11 @@ export class CreateHuntsComponent {
     new Item("Sample Item", false, [{latitude: 15, longitude: 5}])
   ];
   selectedProof:string = 'option1';
+
+  name1:string;
+  name2:string;
+  latitude:number;
+  longitude:number;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -56,8 +63,13 @@ export class CreateHuntsComponent {
     if (this.selectedProof === 'option2') {
       newItem.proofs.push({ latitude: geopointN || 0, longitude: geopointW || 0 });
     }
-
+    console.log(`from addNewItem ` + newItem)
     this.items.push(newItem);
+
+    this.name1 = null;
+    this.name2 = null;
+    this.latitude = null;
+    this.longitude = null;
   }
 
 
@@ -65,6 +77,28 @@ export class CreateHuntsComponent {
     form && form.reset();
 
     this.router.navigate(['../'], { relativeTo: this.route })
+  }
+
+  passDebugItem() {
+    const currentDate = new Date();
+    const oneWeekLater = new Date(currentDate);
+    oneWeekLater.setDate(currentDate.getDate() + 7);
+    const itemList:Item[] = [
+      new Item('Moth', false, [{latitude: 15, longitude: 5.00}]),
+      new Item('Praying Mantis', false, [{latitude: 20.9, longitude: 22}]),
+      new Item('Grasshopper', false, [{latitude: 6, longitude: 43.334}]),
+    ]
+        const newHunt = new Hunt(
+      Date.now(),
+      'Debug Hunt',
+      currentDate,
+      oneWeekLater,
+      itemList,
+      false)
+
+    this.huntService.addHunt(newHunt);
+    this.dbService.saveToDB();
+    console.log(`Passed in Debug Item`)
   }
 
 }
