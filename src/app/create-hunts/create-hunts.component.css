@@ -27,13 +27,20 @@ label {
 
 .modal-container {
   position: fixed;
-  top: 30vh;
-  left: 20vw;
-  width: 75vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
   padding: 16px;
   z-index: 100;
   background: rgba(0, 247, 255, 0.635);
   box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26)
 }
 
+@media screen and (max-width: 600px) {
+  .modal-container {
+    width: 90vw;
+    height: 80vh;
+  }
+}
 
