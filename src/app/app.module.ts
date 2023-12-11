@@ -9,13 +9,17 @@ import { CreateHuntsComponent } from './create-hunts/create-hunts.component';
 import { AuthComponent } from './auth/auth.component';
 import { BrowseHuntsModule } from './browse-hunts/browse-hunts.module';
 import { HttpClientModule } from '@angular/common/http';
+import { LandingComponent } from './landing/landing.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CreateHuntsComponent,
-    AuthComponent
+    AuthComponent,
+    LandingComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
