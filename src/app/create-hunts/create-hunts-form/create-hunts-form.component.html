@@ -21,11 +21,17 @@
         <label for="end">Ending Date:</label>
         <input formControlName="end" class="form-control" type="date" id="end" name="end" required>
 
-        <label for="item">Item:</label>
-        <input formControlName="item" class="form-control" type="text" id="item" name="item" required>
+        <div class="row card" *ngFor="let itemForm of items.controls; let i = index">
+          <!-- <div [formGroup]="itemForm"> -->
+            <label for="item">Item:</label>
+            <input formControlName="item" class="form-control" type="text" id="item" name="item" required>
+            <button type="button" style="margin-left: auto; margin-top: 1rem;" class="col-2 btn btn-vapor-success"
+            (click)="addItems();">Add ➕</button>
+          <!-- </div> -->
+        </div>
 
         <button type="submit" class="btn btn-vapor-success">Submit</button>
-    </div>
+      </div>
   </ng-container>
 
   <ng-container *ngSwitchCase="'option2'">
