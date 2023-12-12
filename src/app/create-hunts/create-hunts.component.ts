@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import { HuntService } from '../shared/hunt.service';
 import { DataStorageService } from '../shared/data-storage.service';
 
+
 @Component({
   selector: 'app-create-hunts',
   templateUrl: './create-hunts.component.html',

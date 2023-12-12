@@ -1,6 +1,9 @@
 <div class="backdrop">
   <div class="modal-container">
-    <form (ngSubmit)="onFormSubmit(f)" #f="ngForm">
+      <app-create-hunts-form></app-create-hunts-form>
+  </div>
+</div>
+    <!-- <form (ngSubmit)="onFormSubmit(f)" #f="ngForm">
         <div class="form-group">
           <label for="name">Hunt Name</label>
           <input
@@ -109,9 +112,7 @@
         </button>
 
         <button (click)="passDebugItem()" type="button" class="btn btn-vapor-primary">Pass in Debug Item</button>
-        <!-- <button [disabled]="!f.valid" class="btn btn-vapor-primary" type="submit">
+        <button [disabled]="!f.valid" class="btn btn-vapor-primary" type="submit">
           {{ isEditingHunt ? "Update" : "Create" }}
-        </button> -->
-    </form>
-  </div>
-</div>
+        </button>
+    </form> -->

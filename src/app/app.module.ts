@@ -5,12 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CreateHuntsComponent } from './create-hunts/create-hunts.component';
+
 import { AuthComponent } from './auth/auth.component';
 import { BrowseHuntsModule } from './browse-hunts/browse-hunts.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
+import { CreateHuntsFormComponent } from './create-hunts/create-hunts-form/create-hunts-form.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +22,16 @@ import { HomeComponent } from './home/home.component';
     CreateHuntsComponent,
     AuthComponent,
     LandingComponent,
-    HomeComponent
+    HomeComponent,
+    CreateHuntsFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowseHuntsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

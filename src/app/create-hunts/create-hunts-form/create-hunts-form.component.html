@@ -1,0 +1,55 @@
+<div class="item-container card" [ngSwitch]="selectedProof">
+
+  <ng-container *ngSwitchCase="undefined">
+      <div class="row">
+        <label for="proofs" style="font-size: 1.5em; margin-left: 2rem;">What type of proofs should your new hunt require?</label>
+        <div style="margin-left: auto;">
+          <button type="button" class="btn btn-vapor-success" style="margin-right: 1em;" (click)="onselectProofs('option1')">None</button>
+          <button type="button" class="btn btn-vapor-warn" style="margin-right: 1em;" (click)="onselectProofs('option2')">GeoPoint</button>
+        </div>
+      </div>
+      </ng-container>
+
+  <ng-container *ngSwitchCase="'option1'">
+    <div [formGroup]="huntForm">
+        <label for="name">Hunt Name:</label>
+        <input formControlName="name" class="form-control" type="text" id="name" name="name" required>
+
+        <label for="begin">Beginning Date:</label>
+        <input formControlName="begin" class="form-control" type="date" id="begin" name="begin" required>
+
+        <label for="end">Ending Date:</label>
+        <input formControlName="end" class="form-control" type="date" id="end" name="end" required>
+
+        <label for="item">Item:</label>
+        <input formControlName="item" class="form-control" type="text" id="item" name="item" required>
+
+        <button type="submit" class="btn btn-vapor-success">Submit</button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'option2'">
+    <div [formGroup]="huntForm">
+        <label for="name">Hunt Name:</label>
+        <input formControlName="name" class="form-control" type="text" id="name" name="name" required>
+
+        <label for="begin">Beginning Date:</label>
+        <input formControlName="begin" class="form-control" type="date" id="begin" name="begin" required>
+
+        <label for="end">Ending Date:</label>
+        <input formControlName="end" class="form-control" type="date" id="end" name="end" required>
+
+        <label for="item">Item:</label>
+        <input formControlName="item" class="form-control" type="text" id="item" name="item" required>
+
+        <label for="latitude">Latitude:</label>
+        <input formControlName="latitude" class="form-control" type="number" id="latitude" name="latitude" required>
+
+        <label for="longitude">Longitude:</label>
+        <input formControlName="longitude" class="form-control" type="number" id="longitude" name="longitude" required>
+
+        <button type="submit" class="btn btn-vapor-success">Submit</button>
+    </div>
+  </ng-container>
+  </div>
+
