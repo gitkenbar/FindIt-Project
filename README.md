@@ -8,7 +8,7 @@ By Kenneth Barker, Jered Huckleberry, and Patrick Ranval
 
 ## To-Do
 
-Authentication - Kenneth
+Place Route Guards to prevent URL navigation directly to child routes of /create - Patrick
 
 ## Change Notes 11/28
 
@@ -43,5 +43,3 @@ Created functions within data-storage.service.ts that both fetch and store data 
 Added save and fetch data buttons to the navbar
 
 Unsuccefully attempted to create a dropdown directive
-
-

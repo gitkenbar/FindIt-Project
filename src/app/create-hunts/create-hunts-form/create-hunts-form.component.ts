@@ -7,13 +7,15 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   styleUrls: ['./create-hunts-form.component.css']
 })
 export class CreateHuntsFormComponent implements OnInit {
-  selectedProof:string;
+
   huntForm:FormGroup;
   itemForm:FormGroup;
 
   constructor(private fb:FormBuilder){}
 
    ngOnInit() {
+    this.buildBasic();
+
     // Subscribe to changes in the item FormArray
     this.item.valueChanges.subscribe(() => {
       this.addItemIfValid();
@@ -30,17 +32,7 @@ export class CreateHuntsFormComponent implements OnInit {
     }
   }
 
-  onselectProofs(proof:string){
-    this.selectedProof = proof;
-    if(this.selectedProof === 'option1') {
-      // this.buildOption1Item();
-      this.buildOption1();
-    } else {
-      this.buildOption2();
-    }
-  }
-
-  buildOption1(){
+  buildBasic(){
     this.huntForm = this.fb.group({
       name: ['', Validators.required],
       begin: ['', Validators.required],

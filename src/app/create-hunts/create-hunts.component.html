@@ -1,6 +1,17 @@
 <div class="backdrop">
   <div class="modal-container">
-      <app-create-hunts-form></app-create-hunts-form>
+      <ng-container *ngIf="!selectedProof">
+        <div class="row item-container card">
+          <p style="font-size: 1.5em; margin-left: 2rem;">What type of proofs should your new hunt require?</p>
+          <div style="margin-left: auto;">
+            <button type="button" class="btn btn-vapor-success" style="margin-right: 1em;"
+              (click)="onBasic()">None</button>
+            <button type="button" class="btn btn-vapor-warn" style="margin-right: 1em;"
+              (click)="onBasic()">GeoPoint</button>
+          </div>
+        </div>
+      </ng-container>
+      <router-outlet></router-outlet>
   </div>
 </div>
     <!-- <form (ngSubmit)="onFormSubmit(f)" #f="ngForm">

@@ -1,37 +1,39 @@
-<div class="item-container card" [ngSwitch]="selectedProof">
+<div style="height: 70vh; overflow-y: auto;">
+<div class="item-container card">
 
-  <ng-container *ngSwitchCase="undefined">
-      <div class="row">
-        <p style="font-size: 1.5em; margin-left: 2rem;">What type of proofs should your new hunt require?</p>
-        <div style="margin-left: auto;">
-          <button type="button" class="btn btn-vapor-success" style="margin-right: 1em;" (click)="onselectProofs('option1')">None</button>
-          <button type="button" class="btn btn-vapor-warn" style="margin-right: 1em;" (click)="onselectProofs('option2')">GeoPoint</button>
-        </div>
-      </div>
-      </ng-container>
-
-  <ng-container *ngSwitchCase="'option1'">
     <form [formGroup]="huntForm" (ngSubmit)="onSubmit()">
-        <label for="name">Hunt Name:</label>
+        <label for="name"><h3>Hunt Name:</h3></label>
         <input formControlName="name" class="form-control" type="text" id="name" name="name" required>
 
-        <div class="row" style="justify-content: space-between;">
-          <div style="margin: auto;">
-            <label for="begin">Beginning Date:</label>
-            <input formControlName="begin" class="form-control" type="date" id="begin" name="begin" required>
-          </div>
+        <hr>
 
-          <div style="margin: auto;">
-          <label for="end">Ending Date:</label>
-          <input formControlName="end" class="form-control" type="date" id="end" name="end" required>
-          </div>
-        </div>
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="card">
+      <label for="begin">
+        <h5>Beginning Date:</h5>
+      </label>
+      <input formControlName="begin" class="form-control" type="date" id="begin" name="begin" required>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <label for="end">
+        <h5>Ending Date:</h5>
+      </label>
+      <input formControlName="end" class="form-control" type="date" id="end" name="end" required>
+    </div>
+  </div>
+
+</div>
 
       <hr>
 
       <div class="container card" style="margin:auto">
         <div formArrayName="item">
-          <h2>Item List </h2>
+          <h4>Item List </h4>
           <div class="row" *ngFor="let item of item.controls; let i = index">
             <div class="input-group" style="margin: 1rem;">
               <label for="item-{{i}}"></label>
@@ -46,33 +48,11 @@
         </div>
       </div>
 
-
-        <button type="submit" class="btn btn-vapor-success" [disabled]="!huntForm.valid">Submit</button>
+          <div style="margin: 1em; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn btn-vapor-success" [disabled]="!huntForm.valid">Submit</button>
+          </div>
       </form>
-  </ng-container>
 
-  <ng-container *ngSwitchCase="'option2'">
-    <div [formGroup]="huntForm">
-        <label for="name">Hunt Name:</label>
-        <input formControlName="name" class="form-control" type="text" id="name" name="name" required>
-
-        <label for="begin">Beginning Date:</label>
-        <input formControlName="begin" class="form-control" type="date" id="begin" name="begin" required>
-
-        <label for="end">Ending Date:</label>
-        <input formControlName="end" class="form-control" type="date" id="end" name="end" required>
-
-        <label for="item">Item:</label>
-        <input formControlName="item" class="form-control" type="text" id="item" name="item" required>
-
-        <label for="latitude">Latitude:</label>
-        <input formControlName="latitude" class="form-control" type="number" id="latitude" name="latitude" required>
-
-        <label for="longitude">Longitude:</label>
-        <input formControlName="longitude" class="form-control" type="number" id="longitude" name="longitude" required>
-
-        <button type="submit" class="btn btn-vapor-success">Submit</button>
-    </div>
-  </ng-container>
+  </div>
   </div>
 
