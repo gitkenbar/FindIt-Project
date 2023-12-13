@@ -13,7 +13,21 @@ export class CreateHuntsFormComponent implements OnInit {
 
   constructor(private fb:FormBuilder){}
 
-  ngOnInit() {
+   ngOnInit() {
+    // Subscribe to changes in the item FormArray
+    this.item.valueChanges.subscribe(() => {
+      this.addItemIfValid();
+    });
+  }
+
+    addItemIfValid() {
+    // Get the last form control in the item FormArray
+    const lastItemControl = this.item.at(this.item.length - 1);
+
+    // Check if the last control is valid and not pristine
+    if (lastItemControl.valid && !lastItemControl.pristine) {
+      this.addItem();
+    }
   }
 
   onselectProofs(proof:string){
@@ -44,7 +58,7 @@ export class CreateHuntsFormComponent implements OnInit {
       this.item.push(this.fb.control(''));
   }
 
-  deleteItemslesson (itemIndex: number) {
+  removeItem(itemIndex: number) {
       this.item.removeAt(itemIndex);
   }
 
