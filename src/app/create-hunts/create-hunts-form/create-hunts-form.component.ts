@@ -19,7 +19,7 @@ export class CreateHuntsFormComponent implements OnInit {
   onselectProofs(proof:string){
     this.selectedProof = proof;
     if(this.selectedProof === 'option1') {
-      this.buildOption1Item();
+      // this.buildOption1Item();
       this.buildOption1();
     } else {
       this.buildOption2();
@@ -31,39 +31,41 @@ export class CreateHuntsFormComponent implements OnInit {
       name: ['', Validators.required],
       begin: ['', Validators.required],
       end: ['', Validators.required],
-      item: this.itemForm
+      item: this.fb.array([this.fb.control('')])
     });
   }
 
-  buildOption1Item(){
-    this.itemForm = this.fb.group({
-      item: this.fb.array([])
-    })
+  //Okay, I really don't understand this, but this.item is referring to this getter method -Patrick
+  get item() {
+    return this.huntForm.get("item") as FormArray;
   }
 
-  get items() {
-      return this.huntForm.controls["item"] as FormArray;
-   }
-
-  addItems() {
-      const itemForm = this.fb.group({
-        item: ['', Validators.required],
-      });
-      this.items.push(itemForm);
-    }
+  addItem() {
+      this.item.push(this.fb.control(''));
+  }
 
   deleteItemslesson (itemIndex: number) {
-      this.items.removeAt(itemIndex);
-    }
+      this.item.removeAt(itemIndex);
+  }
+
+  onSubmit() {
+      console.log(this.huntForm.value);
+  }
 
     buildOption2(){
-      this.huntForm = this.fb.group({
-        name: ['', Validators.required],
-        begin: ['', Validators.required],
-        end: ['', Validators.required],
-        item: ['', Validators.required],
-        latitude: ['', Validators.required],
-        longitude: ['', Validators.required]
-      });
+      // this.huntForm = this.fb.group({
+        //   name: ['', Validators.required],
+        //   begin: ['', Validators.required],
+        //   end: ['', Validators.required],
+        //   item: ['', Validators.required],
+        //   latitude: ['', Validators.required],
+        //   longitude: ['', Validators.required]
+        // });
+      }
+
+        // buildOption1Item(){
+        //   this.itemForm = this.fb.group({
+        //     item: this.fb.array([])
+        //   })
+        // }
     }
-  }
