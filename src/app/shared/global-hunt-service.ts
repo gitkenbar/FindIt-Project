@@ -14,6 +14,10 @@ export class GlobalHuntService {
 
   constructor() { }
 
+  appendGlobalDB(hunt: Hunt) {
+    this.globalHunts.push(hunt);
+  };
+
   setHuntSelectedByUid(uid) {
     let selectedHunt = this.globalHunts.find((hunt) => hunt.uid === uid);
     this.huntSelected.next(selectedHunt);
