@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { CreateHuntsFormComponent } from './create-hunts/create-hunts-form/create-hunts-form.component';
+import { MyHuntsComponent } from './my-hunts/my-hunts.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { CreateHuntsFormComponent } from './create-hunts/create-hunts-form/creat
     AuthComponent,
     LandingComponent,
     HomeComponent,
-    CreateHuntsFormComponent
+    CreateHuntsFormComponent,
+    MyHuntsComponent
   ],
   imports: [
     BrowserModule,

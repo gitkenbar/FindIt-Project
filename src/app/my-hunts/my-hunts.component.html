@@ -1,1 +1,24 @@
-<p>my-hunts works!</p>
+
+    <div class="row">
+      <div class="col-4">
+            <div class="card cardLeft" *ngFor="let hunt of savedHunts">
+            <p>{{ hunt.name }}</p>
+            <p>{{ hunt.begin }}</p>
+            <button class="btn btn-vapor-success" (click)="onSelectHunt(hunt.uid)">View Hunt Details</button>
+          </div>
+      </div>
+    <div class="col-8">
+      <div class="card cardRight" *ngIf="selectedHunt">
+        <h2>{{ selectedHunt.name }}</h2>
+        <p><b>Start Time:</b><br>
+          {{ selectedHunt.begin }}</p>
+        <p><b>End Time:</b><br>
+          {{ selectedHunt.end }}</p>
+        <p><b>Items to Find:</b><br>
+          <ng-container *ngFor="let item of selectedHunt.itemList; let last = last">
+            {{ item.name }}{{ !last ? ', ' : '' }}
+          </ng-container>
+        </p>
+        <p><b>Availability</b><br>
+          {{ selectedHunt.isProtected === true ? 'Request Access' : 'Open to Join' }}</p>
+      </div>
