@@ -5,6 +5,7 @@ import { Hunt } from 'src/app/shared/hunt.model';
 import { HuntService } from 'src/app/shared/hunt.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Item } from 'src/app/shared/item.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-hunts-form',
@@ -20,7 +21,8 @@ export class CreateHuntsFormComponent implements OnInit, OnDestroy {
   constructor(
     private fb:FormBuilder,
     private huntService:HuntService,
-    private dbService:DataStorageService){}
+    private dbService:DataStorageService,
+    private router:Router){}
 
    ngOnInit() {
     this.buildBasic();
@@ -116,7 +118,8 @@ onSubmit() {
 
   //#####
   //This will need to be changed to append
-  this.dbService.saveToDB();
+  this.dbService.appendDB(newHunt);
+  this.router.navigate(['browse']);
 }
 
 fixArray(formArray: FormArray): Item[] {
