@@ -138,3 +138,44 @@ a {
   color: #cc00cc;
   /* Pink text */
 }
+
+/* Experimental Scrollbar Styles */
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffccff;
+  /* Richer Orange thumb */
+  border-radius: 10px;
+  border: 2px solid #cc00cc;
+  /* Teal border */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffcc66;
+  /* Lighter Orange track */
+  border-radius: 10px;
+}
+
+/* Optional: Hover Effect for the Thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ffcc99;
+  /* Even lighter orange on hover */
+}
+
+/* Optional: Scrollbar in Card */
+.card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background-color: #ffaa00;
+  /* Richer Orange thumb in card */
+}
+
+.card::-webkit-scrollbar-track {
+  background-color: #ffcc66;
+  /* Lighter Orange track in card */
+}

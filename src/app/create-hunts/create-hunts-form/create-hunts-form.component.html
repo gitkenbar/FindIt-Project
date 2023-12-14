@@ -1,0 +1,58 @@
+<div style="height: 70vh; overflow-y: auto;">
+<div class="item-container card">
+
+    <form [formGroup]="huntForm" (ngSubmit)="onSubmit();">
+        <label for="name"><h3>Hunt Name:</h3></label>
+        <input formControlName="name" class="form-control" type="text" id="name" name="name" required>
+
+        <hr>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="card">
+      <label for="begin">
+        <h5>Beginning Date:</h5>
+      </label>
+      <input formControlName="begin" class="form-control" type="date" id="begin" name="begin" required>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <label for="end">
+        <h5>Ending Date:</h5>
+      </label>
+      <input formControlName="end" class="form-control" type="date" id="end" name="end" required>
+    </div>
+  </div>
+
+</div>
+
+      <hr>
+
+      <div class="container card" style="margin:auto">
+        <div formArrayName="item">
+          <h4>Item List </h4>
+          <div class="row" *ngFor="let item of item.controls; let i = index">
+            <div class="input-group" style="margin: 1rem;">
+              <label for="item-{{i}}" style="width: 2rem;"><h5>{{i+1}}:</h5></label>
+              <input [formControlName]="i" class="form-control" type="text" id="item-{{i}}" name="item" required>
+              <div class="input-group-append">
+                <button type="button" class="btn btn-vapor-warn" (click)="removeItem(i);" *ngIf="!isLastItem(i)">❌ Remove</button>
+              </div>
+            </div>
+          </div>
+          <!-- <button type="button" style="margin-left: auto; margin-top: 1rem;" class="btn btn-vapor-success"
+          (click)="addItem();">➕ Add an Item</button> -->
+        </div>
+      </div>
+
+          <div style="margin: 1em; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn btn-vapor-success" [disabled]="!isFormValidExceptLastItem()">Submit</button>
+          </div>
+      </form>
+
+  </div>
+  </div>
+
