@@ -31,31 +31,10 @@ export class CreateHuntsComponent implements OnInit {
     this.router.navigate(['basic'], {relativeTo: this.route});
   }
 
-  // onFormSubmit(form: NgForm) {
-  //   console.log(form);
-  //   if (form.invalid) return;
-  //   const uid = Date.now();  //lazy implementation of Unique-enough-IDs
-  //   const name = form.value.name;
-  //   const begin = form.value.begin;
-  //   const end = form.value.end;
-  //   const itemList = this.items;
-  //   // const { uid, name, begin, end, itemList } = Hunt  //destructuring example if needed
-  //   const newHunt = new Hunt(uid, name, begin, end, itemList, false)
-  //   this.huntService.addHunt(newHunt)
-  //   this.onResetForm(form);
-  //   console.log(newHunt);
-  //   this.dbService.saveToDB();
-  // }
 
   getSelectedProof() {
     this.selectedProof;
     console.log(this.selectedProof);
-  }
-
-  onResetForm(form?: NgForm) {
-    form && form.reset();
-
-    this.router.navigate(['../'], { relativeTo: this.route })
   }
 
   passDebugItem() {

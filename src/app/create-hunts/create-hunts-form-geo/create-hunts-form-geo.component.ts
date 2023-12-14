@@ -10,4 +10,17 @@ export class CreateHuntsFormGeoComponent {
   selectedProof:string;
   huntForm:FormGroup;
   itemForm:FormGroup;
+
+
+
+    // buildOption2(){
+    //   this.huntForm = this.fb.group({
+    //       name: ['', Validators.required],
+    //       begin: ['', Validators.required],
+    //       end: ['', Validators.required],
+    //       item: ['', Validators.required],
+    //       latitude: ['', Validators.required],
+    //       longitude: ['', Validators.required]
+    //     });
+    //   }
 }
