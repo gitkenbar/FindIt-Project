@@ -8,7 +8,7 @@ import { MyHuntsAdministratingComponent } from './my-hunts-administrating/my-hun
 
 @NgModule({
   declarations: [
-    MyHuntsComponent,
+    // MyHuntsComponent,
     MyHuntsParticipatingComponent,
     MyHuntsAdministratingComponent
   ],

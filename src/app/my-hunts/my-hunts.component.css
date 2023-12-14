@@ -1,0 +1,10 @@
+.cardLeft {
+  left: 25em;
+  padding: 2rem;
+}
+
+.cardRight {
+  height: 500px;
+  width: 800px;
+  left: 25rem;
+}
