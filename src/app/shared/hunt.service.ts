@@ -9,7 +9,9 @@ export class HuntService {
   huntsChanged = new Subject<Hunt[]>()
   huntSelected = new BehaviorSubject<Hunt>(null);   //flexible observable to broadcast a selected hunt
 
-  private myHunts: Hunt[] = []  //propose renaming variable to reduce ambiguity with GlobalHuntService ::: Maybe we could call them "mySavedHunts"?
+  private myHunts: Hunt[] = [
+    new Hunt(12345, 'The Great Hunt', new Date, new Date, [], false, 'elgato')
+  ]  //propose renaming variable to reduce ambiguity with GlobalHuntService ::: Maybe we could call them "mySavedHunts"?
 
   constructor() { }
 
