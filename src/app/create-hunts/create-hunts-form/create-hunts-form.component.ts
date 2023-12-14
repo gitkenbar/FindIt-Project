@@ -113,6 +113,9 @@ onSubmit() {
   this.huntService.addHunt(newHunt);
 
   console.log(newHunt);
+
+  //#####
+  //This will need to be changed to append
   this.dbService.saveToDB();
 }
 
