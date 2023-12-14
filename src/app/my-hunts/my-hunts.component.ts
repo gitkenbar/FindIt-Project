@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { DataStorageService } from '../shared/data-storage.service';
 import { GlobalHuntService } from '../shared/global-hunt-service';
 import { HuntService } from '../shared/hunt.service';
+import { Item } from '../shared/item.model';
 
 @Component({
   selector: 'app-my-hunts',
@@ -22,10 +23,11 @@ export class MyHuntsComponent implements OnInit, OnDestroy{
   displayedHuntsSub: Subscription;
 
 
+
+
   ///------------////
 
-  constructor (private globalHS: GlobalHuntService,
-               private huntService: HuntService) {}
+  constructor (private huntService: HuntService) {}
 
 
   ///------------////
@@ -33,16 +35,13 @@ export class MyHuntsComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.savedHunts = this.huntService.getMyHunts();
-    this.selectedHuntSub = this.globalHS.huntSelected.subscribe((hunt) => {
+    this.selectedHuntSub = this.huntService.huntSelected.subscribe((hunt) => {
       this.selectedHunt = hunt;
-    });
-    this.displayedHuntsSub = this.globalHS.huntsDisplayed.subscribe((hunts) => {
-      this.displayedHunts = hunts;
     });
   }
 
   onSelectHunt(uid: number) {
-    this.globalHS.setHuntSelectedByUid(uid);
+    this.huntService.setHuntSelectedByIndex(uid);
   }
 
   ngOnDestroy(): void {
@@ -54,5 +53,9 @@ export class MyHuntsComponent implements OnInit, OnDestroy{
       this.displayedHuntsSub.unsubscribe();
     }
   }
+
+  // //Debug Object
+
+
 
 }
