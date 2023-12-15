@@ -5,6 +5,17 @@
 
 .cardRight {
   height: 500px;
-  width: 800px;
-  left: 25rem;
+  width: 1200px;
+  margin-left: 25rem;
+  position: fixed;
+}
+
+.found {
+  color: red;
+  text-decoration: line-through;
+}
+
+.check {
+  margin-left: 5rem;
+  position: relative;
 }
