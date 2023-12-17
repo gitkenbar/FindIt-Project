@@ -14,7 +14,7 @@ export class HuntService {
     ]
 
     debugHunt = new Hunt(
-      0,
+      79,
       'Debug Hunt',
       new Date(),
       new Date(7),

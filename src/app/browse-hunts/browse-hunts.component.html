@@ -24,6 +24,10 @@
       </p>
       <p><b>Availability</b><br>
         {{ selectedHunt.isProtected === true ? 'Request Access' : 'Open to Join' }}</p>
+        <div class="row" style="margin:auto">
+          <button type="button" class="btn btn-vapor-primary" (click)="addToMyHunts();" *ngIf="compareUID()">🕵️‍♀️ Join the Hunt!</button>
+          <h3 *ngIf="!compareUID()">You're participating in this Hunt!</h3>
+        </div>
     </div>
     <ng-template #falseTemplate>
       <div class="card">
