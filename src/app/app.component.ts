@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
+import { DataStorageService } from './shared/data-storage.service';
+import { HuntService } from './shared/hunt.service';
 
 
 @Component({
@@ -9,4 +11,9 @@ import { HeaderComponent } from './header/header.component';
 })
 export class AppComponent {
   title = 'FindIt-Project';
+
+  constructor() {}
+
+
+
 }

@@ -14,8 +14,9 @@ export class HuntService {
   constructor() { }
 
   addHunt(newHunt: Hunt) {
+    console.log("add hunts before push: " + this.myHunts);
     this.myHunts.push(newHunt);
-    console.log(this.myHunts);
+    console.log("add hunts after push: " + this.myHunts);
   }
 
   getMyHunts() {
