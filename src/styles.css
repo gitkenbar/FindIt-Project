@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; */
-  background: linear-gradient(45deg, #ff9900, #ff66cc);
+  background: linear-gradient(90deg, #ff9900, #ff66cc);
   color: #6c757d;
   /* Dark gray text */
   font-family: 'Arial', sans-serif;
@@ -92,6 +92,22 @@ a {
   border-color: #33ff99;
   color: #330099;
   /* Dark purple text on hover */
+}
+
+.btn-vapor-cancel {
+  background-color: #ffcc99;
+  /* Peach/light orange background */
+  border-color: #ffcc99;
+  color: #993300;
+  /* Dark orange text */
+}
+
+.btn-vapor-cancel:hover {
+  background-color: #ffdcb3;
+  /* Lighter peach on hover */
+  border-color: #ffdcb3;
+  color: #993300;
+  /* Dark orange text on hover */
 }
 
 /* Card Styles */
