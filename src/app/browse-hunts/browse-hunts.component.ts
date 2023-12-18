@@ -53,11 +53,28 @@ export class BrowseHuntsComponent implements OnInit, OnDestroy {
     });
    }
 
+   addToMyHunts(){
+    this.huntService.addHunt(this.selectedHunt);
+   }
+
    onSelect(uid:number){
     console.log(uid);
     this.globalHuntService.setHuntSelectedByUid(uid);
-
    }
+
+compareUID() {
+  const uid = this.selectedHunt.uid;
+  const hunts = this.huntService.getMyHunts();
+
+  for (const hunt of hunts) {
+    if (hunt.uid === uid) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 
     // passDebug() {
     //   // this.huntService.addHunt(this.selectedHunt);
