@@ -4,8 +4,8 @@
 }
 
 .cardRight {
-  height: 500px;
-  width: 1200px;
+  height: 40vh;
+  width: 50vw;
   margin-left: 25rem;
   position: fixed;
 }
@@ -16,6 +16,6 @@
 }
 
 .check {
-  margin-left: 5rem;
+  margin-left: 5vw;
   position: relative;
 }

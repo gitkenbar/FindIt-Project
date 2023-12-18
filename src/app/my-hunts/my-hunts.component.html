@@ -2,7 +2,10 @@
     <div class="row">
       <div class="col-4">
             <div class="card cardLeft" *ngFor="let hunt of savedHunts">
-            <p>{{ hunt.name }}</p>
+            <p style="display: flex; justify-content: space-between;">{{ hunt.name }}
+               <button class="btn btn-danger"
+                       (click)="onRemoveHunt(hunt.uid)"
+               >X</button> </p>
             <p>{{ hunt.begin }}</p>
             <button class="btn btn-vapor-success" (click)="onSelectHunt(hunt.uid)">View Hunt Details</button>
           </div>
@@ -23,7 +26,6 @@
           {{ selectedHunt.isProtected === true ? 'Request Access' : 'Open to Join' }}</p>
       </div> -->
 
-<div class="col-8">
 <div *ngIf="selectedHunt">
       <div class="cardRight">
         <div class="item-container card col-md-8" >
@@ -74,4 +76,4 @@
         </div>
       </div>
     </div>
-  </div>
+

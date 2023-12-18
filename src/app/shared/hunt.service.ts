@@ -29,7 +29,7 @@ export class HuntService {
     ]
 
     testHunt = new Hunt(
-      0,
+      1,
       'Test Hunt',
       new Date(),
       new Date(3),
@@ -41,15 +41,15 @@ export class HuntService {
 
   private myHunts: Hunt[] = [
     // new Hunt(12345, 'The Great Hunt', new Date, new Date, [], false, 'elgato')
-    this.debugHunt,
-    this.debugHunt,
-    this.debugHunt,
-    this.debugHunt,
-    this.testHunt,
-    this.debugHunt,
-    this.testHunt,
-    this.debugHunt,
-    this.debugHunt
+    // this.debugHunt,
+    // this.debugHunt,
+    // this.debugHunt,
+    // this.debugHunt,
+    // this.testHunt,
+    // this.debugHunt,
+    // this.testHunt,
+    // this.debugHunt,
+    // this.debugHunt
   ]  //propose renaming variable to reduce ambiguity with GlobalHuntService ::: Maybe we could call them "mySavedHunts"?
 
   constructor() { }
@@ -62,7 +62,7 @@ export class HuntService {
   deleteHuntById(uid: number) {
     const hunts = this.myHunts.filter((hunt) => hunt.uid !== uid);
 
-    console.log(hunts);
+    // console.log(hunts);
     this.myHunts = hunts;
     this.huntsChanged.next(this.myHunts.slice());
   }
@@ -76,8 +76,15 @@ export class HuntService {
     this.huntsChanged.next(this.myHunts.slice());
   }
 
-  setHuntSelectedByIndex(i){                          //a method for setting huntSelected by index
-    let selectedHunt = this.myHunts.slice()[i];
+  // setHuntSelectedByIndex(i){                          //a method for setting huntSelected by index
+  //   let selectedHunt = this.myHunts.slice()[i];
+  //   this.huntSelected.next(selectedHunt);
+  // }
+
+  setHuntSelectedByIndex(uid: number) {
+    const selectedHunt = this.myHunts.find((hunt) => hunt.uid === uid)
+
     this.huntSelected.next(selectedHunt);
   }
+
 }

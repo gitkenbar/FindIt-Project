@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Hunt } from '../shared/hunt.model';
 import { Subscription } from 'rxjs';
-import { DataStorageService } from '../shared/data-storage.service';
-import { GlobalHuntService } from '../shared/global-hunt-service';
 import { HuntService } from '../shared/hunt.service';
 import { Item } from '../shared/item.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-hunts',
@@ -23,11 +22,11 @@ export class MyHuntsComponent implements OnInit, OnDestroy{
   displayedHuntsSub: Subscription;
 
 
-
-
   ///------------////
 
-  constructor (private huntService: HuntService) {}
+
+  constructor (private huntService: HuntService,
+               private router: Router) {}
 
 
   ///------------////
@@ -55,22 +54,20 @@ export class MyHuntsComponent implements OnInit, OnDestroy{
 
   onFind(i: number) {
     this.selectedHunt.itemList[i].huntStatus = !this.selectedHunt.itemList[i].huntStatus;
-    console.log(this.selectedHunt.itemList);
+    // console.log(this.selectedHunt.itemList);
   }
 
   onComplete() {
     let itemList = this.selectedHunt.itemList
     for (const item of itemList) {
       if (item.huntStatus) {
-
-        // Perform actions for valid items here
+        this.huntService.deleteHuntById(this.selectedHunt.uid);
       }
     }
     return false;
   }
 
-  // //Debug Object
-
-
-
+  onRemoveHunt(uid: number) {
+    this.huntService.deleteHuntById(uid);
+  }
 }
