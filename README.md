@@ -11,7 +11,7 @@ Developed By:
 
 ## To-Do
 
-Authentication - Kenneth
+Place Route Guards to prevent URL navigation directly to child routes of /create - Patrick
 
 ## Change Notes 11/28
 
@@ -38,3 +38,11 @@ Built MyHunts folder/files
 : Built MyHuntsAdministrating folder/files
 
 Added navbar HTML template from personal project to get us started with components/layout.
+
+## Change Notes 12/4 - Jered Huckleberry
+
+Created functions within data-storage.service.ts that both fetch and store data into our Firebase project
+
+Added save and fetch data buttons to the navbar
+
+Unsuccefully attempted to create a dropdown directive

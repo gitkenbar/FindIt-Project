@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; */
-  background: linear-gradient(45deg, #ff9900, #ff66cc);
+  background: linear-gradient(90deg, #ff9900, #ff66cc);
   color: #6c757d;
   /* Dark gray text */
   font-family: 'Arial', sans-serif;
@@ -94,8 +94,27 @@ a {
   /* Dark purple text on hover */
 }
 
+.btn-vapor-cancel {
+  background-color: #ffcc99;
+  /* Peach/light orange background */
+  border-color: #ffcc99;
+  color: #993300;
+  /* Dark orange text */
+}
+
+.btn-vapor-cancel:hover {
+  background-color: #ffdcb3;
+  /* Lighter peach on hover */
+  border-color: #ffdcb3;
+  color: #993300;
+  /* Dark orange text on hover */
+}
+
 /* Card Styles */
 .card {
+  margin: 1em;
+  padding: 1em;
+  border-radius: .25em;
   background-color: #ffccff;
   /* Pink background */
   border-color: #cc00cc;
@@ -134,4 +153,45 @@ a {
   /* Dark purple background */
   color: #cc00cc;
   /* Pink text */
+}
+
+/* Experimental Scrollbar Styles */
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffccff;
+  /* Richer Orange thumb */
+  border-radius: 10px;
+  border: 2px solid #cc00cc;
+  /* Teal border */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffcc66;
+  /* Lighter Orange track */
+  border-radius: 10px;
+}
+
+/* Optional: Hover Effect for the Thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ffcc99;
+  /* Even lighter orange on hover */
+}
+
+/* Optional: Scrollbar in Card */
+.card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background-color: #ffaa00;
+  /* Richer Orange thumb in card */
+}
+
+.card::-webkit-scrollbar-track {
+  background-color: #ffcc66;
+  /* Lighter Orange track in card */
 }

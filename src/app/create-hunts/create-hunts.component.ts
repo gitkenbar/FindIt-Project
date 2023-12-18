@@ -1,42 +1,66 @@
-import { Component } from '@angular/core';
+//TODO: Reconfigure as Reactive Form
+
+import { Component, OnInit } from '@angular/core';
 import { Hunt } from '../shared/hunt.model';
+import { Item } from '../shared/item.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HuntService } from '../shared/hunt.service';
+import { DataStorageService } from '../shared/data-storage.service';
+
 
 @Component({
   selector: 'app-create-hunts',
   templateUrl: './create-hunts.component.html',
   styleUrls: ['./create-hunts.component.css']
 })
-export class CreateHuntsComponent {
-  isEditingHunt: boolean = false;
+export class CreateHuntsComponent implements OnInit {
+  selectedProof:boolean;
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private huntService: HuntService) {}
+              private huntService: HuntService,
+              private dbService: DataStorageService) {}
 
-  onFormSubmit(form: NgForm) {
-    console.log(form);
-    if (form.invalid) return;
-
-    const newHunt = new Hunt(  //Consider destructuring as alternative solution for clarity
-      1,
-      form.value.name,
-      form.value.begin,
-      form.value.end,
-      form.value.itemList.split(" "),
-      false )
-
-    this.huntService.addHunt(newHunt)
-    this.onResetForm(form);
-    console.log(newHunt);
+  ngOnInit(): void {
   }
 
-  onResetForm(form?: NgForm) {
-    form && form.reset();
+  onBasic() {
+    this.selectedProof = true;
+    this.router.navigate(['basic'], {relativeTo: this.route});
+  }
 
-    this.router.navigate(['../'], { relativeTo: this.route })
+  onCancel() {
+    this.router.navigate(['browse']);
+  }
+
+
+  getSelectedProof() {
+    this.selectedProof;
+    console.log(this.selectedProof);
+  }
+
+  passDebugItem() {
+    const currentDate = new Date();
+    const oneWeekLater = new Date(currentDate);
+    oneWeekLater.setDate(currentDate.getDate() + 7);
+    const itemList:Item[] = [
+      new Item('Moth', false, [{latitude: 15, longitude: 5.00}]),
+      new Item('Praying Mantis', false, [{latitude: 20.9, longitude: 22}]),
+      new Item('Grasshopper', false, [{latitude: 6, longitude: 43.334}]),
+    ]
+        const newHunt = new Hunt(
+      Date.now(),
+      'Debug Hunt',
+      currentDate,
+      oneWeekLater,
+      itemList,
+      false)
+
+    this.huntService.addHunt(newHunt);
+    this.dbService.saveToDB();
+    console.log(`Passed in Debug Item`)
   }
 
 }
