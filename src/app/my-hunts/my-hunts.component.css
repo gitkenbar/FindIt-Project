@@ -1,3 +1,9 @@
+h5 {
+  width: 60%;
+  padding: 3px;
+  text-align: center;
+}
+
 .cardLeft {
   left: 25em;
   padding: 2rem;
@@ -9,9 +15,15 @@
   margin-left: 25rem;
   position: fixed;
 }
-
+.notFound {
+  background-color: green;
+  color: lightgreen;
+  border: 1px solid darkgreen
+}
 .found {
-  color: red;
+  background-color: red;
+  color: white;
+  border: 1px solid darkred;
   text-decoration: line-through;
 }
 
