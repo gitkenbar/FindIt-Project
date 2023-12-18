@@ -99,8 +99,6 @@ export class CreateHuntsFormComponent implements OnInit, OnDestroy {
   }
 
 onSubmit() {
-  console.log(this.huntForm.value);
-
   const uid = Date.now();  // Lazy implementation of Unique-enough-IDs
   const name = this.huntForm.value.name;
   const begin = this.huntForm.value.begin;
@@ -112,12 +110,10 @@ onSubmit() {
   console.log(itemList);
 
   const newHunt = new Hunt(uid, name, begin, end, itemList, false);
+
   this.huntService.addHunt(newHunt);
 
   console.log(newHunt);
-
-  //#####
-  //This will need to be changed to append
   this.dbService.appendDB(newHunt);
   this.router.navigate(['browse']);
 }

@@ -21,9 +21,9 @@ export class HeaderComponent implements OnInit{
   ) {};
 
   onLogout() {
-    console.log("Before Log-out: ", this.authService.user);
-    this.authService.logout;
-    console.log("After Log-Out: ", this.authService.user);
+    //console.log("Before Log-out: ", this.authService.user);
+    this.authService.logout();
+    //console.log("After Log-Out: ", this.authService.user);
     this.isAuthenticated = !this.isAuthenticated;
     this.router.navigate(['auth']);
   }
@@ -33,7 +33,9 @@ export class HeaderComponent implements OnInit{
         this.isAuthenticated = !!user
         // where !! means not-not where !user is not the user, and !!user is not- not the user.
       });
-    }
+  }
+
+    //create - behavior subject .next ()
 
   onSave() {
     this.dbService.saveToDB();

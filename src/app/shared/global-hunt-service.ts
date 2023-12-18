@@ -30,6 +30,7 @@ export class GlobalHuntService {
 
   getGlobalHunts() {
     this.huntsDisplayed.next(this.globalHunts);
+    return this.globalHunts;
   }
 
 }
