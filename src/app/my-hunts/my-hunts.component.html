@@ -1,79 +1,84 @@
-
-    <div class="row">
-      <div class="col-4">
-            <div class="card cardLeft" *ngFor="let hunt of savedHunts">
-            <p style="display: flex; justify-content: space-between; font-size: 2em;">{{ hunt.name }}
-               <button class="btn btn-danger"
-                       (click)="onRemoveHunt(hunt.uid)"
-               >X</button> </p>
-            <p>{{ hunt.begin }}</p>
-            <button class="btn btn-vapor-success" (click)="onSelectHunt(hunt.uid)">View Hunt Details</button>
-          </div>
-      </div>
-    <!-- <div class="col-8">
-      <div class="card cardRight" *ngIf="selectedHunt">
-        <h2>{{ selectedHunt.name }}</h2>
-        <p><b>Start Time:</b><br>
-          {{ selectedHunt.begin }}</p>
-        <p><b>End Time:</b><br>
-          {{ selectedHunt.end }}</p>
-        <p><b>Items to Find:</b><br>
-          <ng-container *ngFor="let item of selectedHunt.itemList; let last = last">
-            {{ item.name }}{{ !last ? ', ' : '' }}
-          </ng-container>
-        </p>
-        <p><b>Availability</b><br>
-          {{ selectedHunt.isProtected === true ? 'Request Access' : 'Open to Join' }}</p>
-      </div> -->
-
-<div *ngIf="selectedHunt">
-      <div class="cardRight">
-        <div class="item-container card col-md-8" >
-
-          <div>
-            <label><h3>Hunt Name:</h3></label>
-            <div>{{ selectedHunt.name }}</div>
-          </div>
-
-          <hr>
-
-          <div class="row">
-
-            <div class="col-md-6">
-              <div class="card">
-                <label><h5>Beginning Date:</h5></label>
-                <div>{{ selectedHunt.begin }}</div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="card">
-                <label><h5>Ending Date:</h5></label>
-                <div>{{ selectedHunt.end }}</div>
-              </div>
-            </div>
-
-          </div>
-
-          <hr>
-
-          <div class="container card" style="margin:auto">
-            <div>
-              <h4>Item List </h4>
-              <div class="row" *ngFor="let item of selectedHunt.itemList; let i = index">
-                <div class="input-group" style="margin: .5rem;">
-                  <label style="width: 2rem;"><h5>{{i+1}}:</h5></label>
-                    <h5 [ngClass]="{'notFound': !item.huntStatus, 'found': item.huntStatus}">{{ item.name }}</h5>
-                    <button *ngIf="!item.huntStatus" type="button" class="btn btn-vapor-success check" (click)="onFind(i)">✓</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div style="margin: 1em; display: flex; justify-content: flex-end;">
-            <button type="button" class="btn btn-vapor-success" (click)="onComplete()">Complete Hunt</button>
-          </div>
+<div class="row">
+  <!-- Trophy Case -->
+  <div class="col-4">
+    <div class="card item-container background-gradient-6"  style="text-align: center;">
+      <h2><b>⭐🏆 Trophy Case 🏆⭐</b></h2>
+      <hr>
+      <div *ngFor="let trophy of trophyCase">
+        <div class="background-gradient-4" style="border-radius: .25rem;">
+          <h3 style="color: #66ffb3;">✅🏆 {{trophy}}</h3>
         </div>
       </div>
     </div>
+  </div>
 
+  <!-- Saved Hunts -->
+  <div class="col-4">
+    <div class="card cardLeft" *ngFor="let hunt of savedHunts">
+      <p style="display: flex; justify-content: space-between; font-size: 2em;">
+        {{ hunt.name }}
+        <button class="btn btn-danger" (click)="onRemoveHunt(hunt.uid)">X</button>
+      </p>
+      <p>{{ hunt.begin }}</p>
+      <button class="btn btn-vapor-success" (click)="onSelectHunt(hunt.uid)">View Hunt Details</button>
+    </div>
+  </div>
+
+  <!-- Selected Hunt -->
+  <div class="col-4" *ngIf="selectedHunt">
+    <div class="cardRight">
+      <div class="item-container card col-md-8">
+        <div>
+          <label>
+            <h3>Hunt Name:</h3>
+          </label>
+          <div>{{ selectedHunt.name }}</div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <label>
+                <h5>Beginning Date:</h5>
+              </label>
+              <div>{{ selectedHunt.begin }}</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card">
+              <label>
+                <h5>Ending Date:</h5>
+              </label>
+              <div>{{ selectedHunt.end }}</div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="container card" style="margin:auto">
+          <div>
+            <h4>Item List </h4>
+            <div class="row" *ngFor="let item of selectedHunt.itemList; let i = index">
+              <div class="input-group" style="margin: .5rem;">
+                <label style="width: 2rem;">
+                  <h5>{{i+1}}:</h5>
+                </label>
+                <h5 [ngClass]="{'notFound': !item.huntStatus, 'found': item.huntStatus}">{{ item.name }}</h5>
+                <button *ngIf="!item.huntStatus" type="button" class="btn btn-vapor-success check"
+                  (click)="onFind(i)">✓</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin: 1em; display: flex; justify-content: flex-end;">
+          <button type="button" class="btn btn-vapor-success" (click)="onComplete()">Complete Hunt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
