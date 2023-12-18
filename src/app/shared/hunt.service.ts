@@ -8,9 +8,9 @@ import { Item } from './item.model';
 })
 export class HuntService {
   debugItems:Item[] = [
-    new Item('Bugs', true),
+    new Item('Bugs', false),
     new Item('Duck', false),
-    new Item('Goose', true)
+    new Item('Goose', false)
     ]
 
     debugHunt = new Hunt(
@@ -21,12 +21,35 @@ export class HuntService {
       this.debugItems,
       false
     )
+
+    testItems: Item[] = [
+      new Item('Oak Tree', false),
+      new Item('Poplar Tree', false),
+      new Item('Sassafras Tree', false)
+    ]
+
+    testHunt = new Hunt(
+      1,
+      'Test Hunt',
+      new Date(),
+      new Date(3),
+      this.testItems,
+      false
+    )
   huntsChanged = new Subject<Hunt[]>()
   huntSelected = new BehaviorSubject<Hunt>(null);   //flexible observable to broadcast a selected hunt
 
   private myHunts: Hunt[] = [
     // new Hunt(12345, 'The Great Hunt', new Date, new Date, [], false, 'elgato')
-    this.debugHunt
+    // this.debugHunt,
+    // this.debugHunt,
+    // this.debugHunt,
+    // this.debugHunt,
+    // this.testHunt,
+    // this.debugHunt,
+    // this.testHunt,
+    // this.debugHunt,
+    // this.debugHunt
   ]  //propose renaming variable to reduce ambiguity with GlobalHuntService ::: Maybe we could call them "mySavedHunts"?
 
   constructor() { }
@@ -35,6 +58,14 @@ export class HuntService {
     console.log("add hunts before push: " + this.myHunts);
     this.myHunts.push(newHunt);
     console.log("add hunts after push: " + this.myHunts);
+  }
+
+  deleteHuntById(uid: number) {
+    const hunts = this.myHunts.filter((hunt) => hunt.uid !== uid);
+
+    // console.log(hunts);
+    this.myHunts = hunts;
+    this.huntsChanged.next(this.myHunts.slice());
   }
 
   getMyHunts() {
@@ -46,8 +77,15 @@ export class HuntService {
     this.huntsChanged.next(this.myHunts.slice());
   }
 
-  setHuntSelectedByIndex(i){                          //a method for setting huntSelected by index
-    let selectedHunt = this.myHunts.slice()[i];
+  // setHuntSelectedByIndex(i){                          //a method for setting huntSelected by index
+  //   let selectedHunt = this.myHunts.slice()[i];
+  //   this.huntSelected.next(selectedHunt);
+  // }
+
+  setHuntSelectedByIndex(uid: number) {
+    const selectedHunt = this.myHunts.find((hunt) => hunt.uid === uid)
+
     this.huntSelected.next(selectedHunt);
   }
+
 }
