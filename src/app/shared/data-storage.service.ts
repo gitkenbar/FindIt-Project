@@ -17,15 +17,12 @@ export class DataStorageService {
               private globalHuntService:GlobalHuntService) { }
 
   appendDB(hunt: Hunt) {
-<<<<<<< Updated upstream
     this.fetchFromDB();
-=======
-    // this.fetchFromDB();
 
->>>>>>> Stashed changes
     this.globalHuntService.appendGlobalDB(hunt);
-    const updatedHunts = this.globalHuntService.getGlobalHunts();
-    this.http.put(this.firebaseURL, updatedHunts).subscribe();
+    // const updatedHunts = this.globalHuntService.getGlobalHunts();
+    this.saveToDB();
+    // this.http.put(this.firebaseURL, updatedHunts).subscribe();
   };
 
   saveToDB() {
