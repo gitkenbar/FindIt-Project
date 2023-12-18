@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-4">
             <div class="card cardLeft" *ngFor="let hunt of savedHunts">
-            <p style="display: flex; justify-content: space-between;">{{ hunt.name }}
+            <p style="display: flex; justify-content: space-between; font-size: 2em;">{{ hunt.name }}
                <button class="btn btn-danger"
                        (click)="onRemoveHunt(hunt.uid)"
                >X</button> </p>
