@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hunt } from './hunt.model';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 import { Item } from './item.model';
 
 @Injectable({
@@ -36,28 +36,20 @@ export class HuntService {
       this.testItems,
       false
     )
-  huntsChanged = new Subject<Hunt[]>()
-  huntSelected = new BehaviorSubject<Hunt>(null);   //flexible observable to broadcast a selected hunt
 
-  private myHunts: Hunt[] = [
-    // new Hunt(12345, 'The Great Hunt', new Date, new Date, [], false, 'elgato')
-    // this.debugHunt,
-    // this.debugHunt,
-    // this.debugHunt,
-    // this.debugHunt,
-    // this.testHunt,
-    // this.debugHunt,
-    // this.testHunt,
-    // this.debugHunt,
-    // this.debugHunt
-  ]  //propose renaming variable to reduce ambiguity with GlobalHuntService ::: Maybe we could call them "mySavedHunts"?
+    huntSelected = new BehaviorSubject<Hunt>(null);
+    huntsChanged = new BehaviorSubject<Hunt[]>(null);
+    trophyCase = new BehaviorSubject<string[]>(null);
+
+  private myHunts: Hunt[] = [];
+  private myTrophies: string[] = [];
 
   constructor() { }
 
   addHunt(newHunt: Hunt) {
     console.log("add hunts before push: " + this.myHunts);
     this.myHunts.push(newHunt);
-    console.log("add hunts after push: " + this.myHunts);
+    this.huntsChanged.next(this.myHunts);
   }
 
   deleteHuntById(uid: number) {
@@ -77,9 +69,18 @@ export class HuntService {
     this.huntsChanged.next(this.myHunts.slice());
   }
 
-  // setHuntSelectedByIndex(i){                          //a method for setting huntSelected by index
-  //   let selectedHunt = this.myHunts.slice()[i];
-  //   this.huntSelected.next(selectedHunt);
+  addTrophy(string) {
+    this.myTrophies.push(string);
+    this.trophyCase.next(this.myTrophies.slice())
+  }
+
+  // setMyTrophies(myTrophies: string[]) {
+  //   this.myTrophies = myTrophies;
+  //   this.trophyCase.next(this.myTrophies.slice())
+  // }
+
+  // getMyTrophies() {
+  //   return this.myTrophies.slice()
   // }
 
   setHuntSelectedByIndex(uid: number) {

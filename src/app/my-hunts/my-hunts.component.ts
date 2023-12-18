@@ -18,9 +18,8 @@ export class MyHuntsComponent implements OnInit, OnDestroy{
   savedHunts: Hunt[] = [];
   savedHuntsSub: Subscription;
 
-  displayedHunts: Hunt[];
-  displayedHuntsSub: Subscription;
-
+  trophyCase: string[] = [];
+  trophySub: Subscription;
 
   ///------------////
 
@@ -33,10 +32,16 @@ export class MyHuntsComponent implements OnInit, OnDestroy{
 
 
   ngOnInit(): void {
-    this.savedHunts = this.huntService.getMyHunts();
+    // this.savedHunts = this.huntService.getMyHunts();
+    this.savedHuntsSub = this.huntService.huntsChanged.subscribe((huntsChanged) => {
+      this.savedHunts = huntsChanged;
+    })
     this.selectedHuntSub = this.huntService.huntSelected.subscribe((hunt) => {
       this.selectedHunt = hunt;
     });
+    this.trophySub = this.huntService.trophyCase.subscribe((myTrophies) => {
+      this.trophyCase = myTrophies;
+    })
   }
 
   onSelectHunt(uid: number) {
@@ -47,21 +52,22 @@ export class MyHuntsComponent implements OnInit, OnDestroy{
     if(this.selectedHuntSub) {
       this.selectedHuntSub.unsubscribe();
     }
-    if(this.displayedHuntsSub) {
-      this.displayedHuntsSub.unsubscribe();
+    if (this.savedHuntsSub) {
+      this.savedHuntsSub.unsubscribe();
     }
   }
 
   onFind(i: number) {
     this.selectedHunt.itemList[i].huntStatus = !this.selectedHunt.itemList[i].huntStatus;
-    // console.log(this.selectedHunt.itemList);
   }
 
   onComplete() {
     let itemList = this.selectedHunt.itemList
     for (const item of itemList) {
       if (item.huntStatus) {
+        this.huntService.addTrophy(this.selectedHunt.name);
         this.huntService.deleteHuntById(this.selectedHunt.uid);
+        this.huntService.huntSelected.next(null);
       }
     }
     return false;
