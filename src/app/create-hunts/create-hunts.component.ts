@@ -31,6 +31,10 @@ export class CreateHuntsComponent implements OnInit {
     this.router.navigate(['basic'], {relativeTo: this.route});
   }
 
+  onCancel() {
+    this.router.navigate(['browse']);
+  }
+
 
   getSelectedProof() {
     this.selectedProof;
