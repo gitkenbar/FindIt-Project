@@ -6,6 +6,7 @@ import { GlobalHuntService } from '../shared/global-hunt-service';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { Hunt } from '../shared/hunt.model';
+import { AuthService } from '../shared/auth/auth.service';
 
 
 
@@ -15,6 +16,7 @@ import { Hunt } from '../shared/hunt.model';
   styleUrls: ['./browse-hunts.component.css']
 })
 export class BrowseHuntsComponent implements OnInit, OnDestroy {
+  isAuthenticated = false
 
   selectedHunt:Hunt;
   selectedHuntSubscription:Subscription;
@@ -24,7 +26,8 @@ export class BrowseHuntsComponent implements OnInit, OnDestroy {
 
   constructor (private dataStorage:DataStorageService,
                private huntService:HuntService,
-               private globalHuntService:GlobalHuntService) {}
+               private globalHuntService:GlobalHuntService,
+               private authService: AuthService) {}
 
     ngOnInit(){
       this.onGetGlobal();
@@ -35,6 +38,10 @@ export class BrowseHuntsComponent implements OnInit, OnDestroy {
       this.displayedHuntsSubscription = this.globalHuntService.huntsDisplayed.subscribe((hunts) => {
         this.displayedHunts = hunts;
       });
+      this.authService.user.subscribe(user => {
+        this.isAuthenticated = !!user
+        // where !! means not-not where !user is not the user, and !!user is not- not the user.
+      });
     }
 
     ngOnDestroy() {
@@ -44,6 +51,7 @@ export class BrowseHuntsComponent implements OnInit, OnDestroy {
       if(this.displayedHuntsSubscription) {
         this.displayedHuntsSubscription.unsubscribe();
       }
+      this.authService.user.unsubscribe();
     }
 
    onGetGlobal(){

@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit{
     console.log("Before Log-out: ", this.authService.user);
     this.authService.logout();
     console.log("After Log-Out: ", this.authService.user);
-    this.isAuthenticated = !this.isAuthenticated;
+    this.isAuthenticated = false;
     this.router.navigate(['auth']);
   }
 

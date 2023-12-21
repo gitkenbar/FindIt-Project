@@ -30,7 +30,7 @@ export class AuthComponent {
     if (!authForm.valid) return;
 
     // Destructure the form input values
-    const {email, password } = authForm.value;
+    const {email, password} = authForm.value;
 
     // property used for loading animation
     this.isLoading = true;
@@ -43,16 +43,17 @@ export class AuthComponent {
       // Sign Up logic
       this.authObs = this.authService.signUp(email, password);
     }
-    // Observable logic with error handling
+    // Observable logic with navigation & error handling
     this.authObs.subscribe({
-      next: (resData) => this.router.navigate(['/home']),
-      error: (resData) => console.log("error" + resData)
+      next: (resData) => this.router.navigate(['browse']),
+      error: (resData) => {console.log(resData)}
       });
       // Reset the form
 
     authForm.reset();
   }
 
+  // Method to switch Log-in mode to Sign-Up
   toggleSignIn(){
     this.isLoginMode = !this.isLoginMode;
   };

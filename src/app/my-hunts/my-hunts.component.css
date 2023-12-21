@@ -5,31 +5,16 @@ h5 {
   text-align: center;
 }
 
-.cardLeft {
-  left: 25em;
-  padding: 2rem;
-}
-
-.cardRight {
-  height: 40vh;
-  width: 50vw;
-  margin-left: 25rem;
-  position: fixed;
-}
 .notFound {
-  background-color: green;
-  color: lightgreen;
-  border: 1px solid darkgreen
+  color: green;
 }
 
 .found {
-  background-color: red;
-  color: white;
-  border: 1px solid darkred;
+  color: red;
   text-decoration: line-through;
 }
 
 .check {
-  margin-left: 5vw;
-  position: relative;
+  margin: 5px;
+  justify-content: space-between;
 }
