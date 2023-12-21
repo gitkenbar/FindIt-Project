@@ -7,7 +7,7 @@
       <a
       class="nav-item nav-link"
       routerLink="browse"
-       routerLinkActive="active">Browse Hunts</a>
+       routerLinkActive="active" *ngIf="isAuthenticated">Browse Hunts</a>
       <a class="nav-item nav-link" routerLink="create" routerLinkActive="active"
       *ngIf="isAuthenticated">Create a Hunt</a>
     </div>
