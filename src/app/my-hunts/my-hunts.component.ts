@@ -61,17 +61,24 @@ export class MyHuntsComponent implements OnInit, OnDestroy{
     this.selectedHunt.itemList[i].huntStatus = !this.selectedHunt.itemList[i].huntStatus;
   }
 
-  onComplete() {
-    let itemList = this.selectedHunt.itemList
-    for (const item of itemList) {
-      if (item.huntStatus) {
-        this.huntService.addTrophy(this.selectedHunt.name);
-        this.huntService.deleteHuntById(this.selectedHunt.uid);
-        this.huntService.huntSelected.next(null);
-      }
-    }
-    return false;
+  onCheckComplete(){
+  let itemList = this.selectedHunt.itemList;
+  const allItemsTrue = itemList.every(item => item.huntStatus);
+
+  return allItemsTrue;
   }
+
+  onComplete() {
+  let itemList = this.selectedHunt.itemList;
+  const allItemsTrue = itemList.every(item => item.huntStatus);
+
+  if (allItemsTrue) {
+      this.huntService.addTrophy(this.selectedHunt.name);
+      this.huntService.deleteHuntById(this.selectedHunt.uid);
+      this.huntService.huntSelected.next(null);
+  }
+  return false;
+}
 
   onRemoveHunt(uid: number) {
     this.huntService.deleteHuntById(uid);

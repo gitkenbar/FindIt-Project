@@ -43,7 +43,7 @@
           <div class="col-md-6">
             <div class="card">
               <label>
-                <h5>Starting Date:</h5>
+                <h3>Starting Date:</h3>
               </label>
               <div>{{ selectedHunt.begin }}</div>
             </div>
@@ -52,7 +52,7 @@
           <div class="col-md-6">
             <div class="card">
               <label>
-                <h5>Ending Date:</h5>
+                <h3>Ending Date:</h3>
               </label>
               <div>{{ selectedHunt.end }}</div>
             </div>
@@ -80,7 +80,7 @@
         </div>
 
         <div style="margin: 1em; display: flex; justify-content: flex-end;">
-          <button type="button" class="btn btn-vapor-success" (click)="onComplete()">Complete Hunt</button>
+          <button type="button" class="btn btn-vapor-success" [disabled]="!onCheckComplete()" (click)="onComplete()">Complete Hunt</button>
         </div>
       </div>
     </div>
