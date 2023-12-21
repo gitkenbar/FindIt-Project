@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Hunt } from 'src/app/shared/hunt.model';
 import { HuntService } from 'src/app/shared/hunt.service';
@@ -27,7 +27,6 @@ export class CreateHuntsFormComponent implements OnInit, OnDestroy {
    ngOnInit() {
     this.buildBasic();
 
-    // Subscribe to changes in the item FormArray
     this.itemSub = this.item.valueChanges.subscribe(() => {
       this.addItemIfValid();
     });
@@ -70,14 +69,12 @@ export class CreateHuntsFormComponent implements OnInit, OnDestroy {
     return index === this.item.controls.length - 1;
   }
 
-  //OMG this fricking method. -Patrick
   isFormValidExceptLastItem(): boolean {
     const formArray = this.huntForm.get('item') as FormArray;
     if (formArray.length <= 1) {
       return false;
     }
 
-    // Check other conditions as needed
     const otherConditionsMet =
     this.huntForm.get('name').value !== 'Invalid' &&
     this.huntForm.get('begin').value < this.huntForm.get('end').value;
@@ -86,7 +83,6 @@ export class CreateHuntsFormComponent implements OnInit, OnDestroy {
       return false;
     }
 
-    // Iterate through form controls except the last one
     for (let i = 0; i < formArray.length - 1; i++) {
       const control = formArray.at(i);
       if (control.invalid) {
@@ -94,7 +90,6 @@ export class CreateHuntsFormComponent implements OnInit, OnDestroy {
       }
     }
 
-    // Check the overall form validity (including the last item)
     return true;
   }
 
@@ -115,7 +110,7 @@ onSubmit() {
 
   console.log(newHunt);
   this.dbService.appendDB(newHunt);
-  this.router.navigate(['browse']);
+  this.router.navigate(['myHunts']);
 }
 
 fixArray(formArray: FormArray): Item[] {
