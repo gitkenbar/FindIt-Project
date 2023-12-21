@@ -1,9 +1,20 @@
+
+h5 {
+  width: 60%;
+  padding: 3px;
+  text-align: center;
+}
+
+.notFound {
+  color: green;
+}
+
 .found {
   color: red;
   text-decoration: line-through;
 }
 
 .check {
-  margin-left: 5vw;
-  position: relative;
+  margin: 5px;
+  justify-content: space-between;
 }

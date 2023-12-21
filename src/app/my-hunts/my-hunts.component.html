@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" >
   <!-- Trophy Case -->
   <div class="col-4">
     <div class="card item-container background-gradient-6"  style="text-align: center;">
@@ -32,9 +32,9 @@
       <div class="item-container card col-md-8">
         <div>
           <label>
-            <h3>Hunt Name:</h3>
+            <p>Hunt Name:</p>
           </label>
-          <div>{{ selectedHunt.name }}</div>
+          <h1>{{ selectedHunt.name }}</h1>
         </div>
 
         <hr>
@@ -43,7 +43,7 @@
           <div class="col-md-6">
             <div class="card">
               <label>
-                <h5>Beginning Date:</h5>
+                <h5>Starting Date:</h5>
               </label>
               <div>{{ selectedHunt.begin }}</div>
             </div>
@@ -58,22 +58,22 @@
             </div>
           </div>
         </div>
-
         <hr>
-
         <div class="container card" style="margin:auto">
           <div>
             <h4>Item List </h4>
             <div class="row" *ngFor="let item of selectedHunt.itemList; let i = index">
-              <div class="input-group" style="margin: .5rem;">
-                <label style="width: 2rem;">
-                  <h5>{{i+1}}:</h5>
+              <div class="input-group">
+
+                <div >
+                <button type="button" class="btn btn-vapor-success check"
+                    (click)="onFind(i)">{{!item.huntStatus ? "✓" :"✗" }}</button>
+                </div>
+                <label>
+                  <h3>{{i+1}}:</h3>
                 </label>
-                <h5 [ngClass]="{'notFound': !item.huntStatus, 'found': item.huntStatus}">{{ item.name }}</h5>
-                <button *ngIf="!item.huntStatus" type="button" class="btn btn-vapor-success check"
-                  (click)="onFind(i)">✓</button>
+                <h3 [ngClass]="{'notFound': !item.huntStatus, 'found': item.huntStatus}">{{ item.name }}</h3>
               </div>
-            </div>
           </div>
         </div>
 

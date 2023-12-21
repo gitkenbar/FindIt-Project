@@ -61,11 +61,11 @@ export class AuthService {
         returnSecureToken: true
       })
       .pipe(
-        tap(resData => {
+         tap(resData => {
       const { email, userId, idToken, expiresIn } = resData;
-      console.log("Login resData", resData);
+      //console.log("Login resData", resData);
       this.handleAuthentication(email, userId, idToken, +expiresIn);
-      console.log("UserData: ", this.user)
+      //console.log("UserData: ", this.user)
     }));
   }
 
@@ -87,8 +87,8 @@ export class AuthService {
 
   }
 
-  private handleError(errorRes: HttpErrorResponse) {
-    let errorMessage = 'An unknown error occured!';
+  public handleError(errorRes: HttpErrorResponse) {
+    let errorMessage = 'Incorrect Username or Password';  //'An unknown error occured!';
       if (!errorRes.error || !errorRes.error.error) {
         return errorMessage;
       }

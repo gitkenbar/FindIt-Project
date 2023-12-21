@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HuntService } from '../shared/hunt.service';
 import { DataStorageService } from '../shared/data-storage.service';
+import { GlobalHuntService } from '../shared/global-hunt-service';
 
 
 @Component({
@@ -21,9 +22,14 @@ export class CreateHuntsComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private huntService: HuntService,
-              private dbService: DataStorageService) {}
+              private dbService: DataStorageService,
+              private globalHuntService: GlobalHuntService) {}
 
   ngOnInit(): void {
+    this.dbService.fetchFromDB().subscribe({
+      next: (data) => this.globalHuntService.setGlobalHunts(data),
+      error: (error) => console.log(`ERROR BAD FAIL. Sincerely, browse-hunts.component.ts` + error )
+    });
   }
 
   onBasic() {
