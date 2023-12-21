@@ -67,7 +67,9 @@
 
                 <div >
                 <button type="button" class="btn btn-vapor-success check"
-                    (click)="onFind(i)">{{!item.huntStatus ? "✓" :"✗" }}</button>
+                    (click)="onFind(i)" *ngIf="!item.huntStatus"> ✓ </button>
+                <button type="button" class="btn check"
+                    (click)="onFind(i)" *ngIf="item.huntStatus"> ⮌ </button>
                 </div>
                 <label>
                   <h3>{{i+1}}:</h3>
