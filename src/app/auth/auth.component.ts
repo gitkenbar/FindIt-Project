@@ -46,7 +46,7 @@ export class AuthComponent {
     // Observable logic with navigation & error handling
     this.authObs.subscribe({
       next: (resData) => this.router.navigate(['browse']),
-      error: (resData) => {console.log(resData)}
+      error: (resData) => this.error = this.authService.handleError(resData)
       });
       // Reset the form
 
